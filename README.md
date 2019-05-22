@@ -1,5 +1,5 @@
 # 3D Helmholtz coil system
-
+[TOC]
 ## Objective of the project
 
 This project aim is to prototype some kind of system control it automaticaly and make some fields setups in static applications.
@@ -116,10 +116,47 @@ Wire External Diameter = 0.6 mm (Real Life), 0.66 (Project)
 | Middle | 56.15 mm | 4 mm| 5.5 mm | 
 | External | 66.5 mm | 4.65 mm| 5.5 mm | 
 
-And from those results the 3D model was done and printed in [Reprap] in really high precision.
+And from those results the 3D model was done in the solidWorks and the result is seen in the following image:
+
 ![](https://i.imgur.com/0EmAI26.png)
 
-The 
+In the center of the structure, have some holes, they were thought in a way that another 3D model could be done to support the **magnetic sensor** of the system and then above the support for the magnetic sensor another 3D model to support the sample to be tested
+
+#stuff about the 3D models
+All the supports are binded with pegs that are printed too
+
+
+and printed in [Reprap]
+
+
+
+#stuff about the 3D models end
+
+
+![](1https://i.imgur.com/snpOLTE.gif)
+
+
+#### Practical results
+
+## Magnetic sensor
+
+## Controller
+
+#### Current controller
+#### Polaraty controller
+#### Sensor controller
+
+### Power Supply
+
+### H-bridges
+
+### MCU
+
+
+## Interface
+
+## Integration
+
 
 
 
