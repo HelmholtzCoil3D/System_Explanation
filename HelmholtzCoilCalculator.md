@@ -2,21 +2,13 @@
 
 Here there's a python script integrated to a custom library that calculates the necessary measures to construct a 3D helmholtz coil with desired parameters.
 
+<p align="center">
+  <img src="https://i.imgur.com/ME0H3qo.png">
+</p>
+
 for example the setting parameters:
 
 ```python
-# ----------------------------------------------------------#
-# 1 2 3 4 5 6 -> LoopsInEachEvenLayer = 6                   #
-#|-----------|                                              #
-#|0 0 0 0 0 0| even                                    |0 ..#
-#| 0 0 0 0 0 | odd                                     |    #
-#|0 0 0 0 0 0| even (always start with even layer)     |0 ..#
-#|-----------|                 ...                     |----#
-#            V                                         V    #
-#           edge                                      edge  #
-# *cross-cut of the windings where each "0" is a winding    #
-#-----------------------------------------------------------#
-
 # have to use wireExternalDiameter*1.1
 AllCoilsWireDiameter = (0.56 + 0.047)*1.1   # Wire diameter in mm (from dataSheet)
 
@@ -53,10 +45,10 @@ xDesiredField = 0.25           # The desired field in the center of the Helmholt
 ```
 Results in the console:
 
-![](https://i.imgur.com/TJTAAUR.png)\
-**\* The distance between coils must be from edge to edge, not center to center (diameter/2)**
+![](https://i.imgur.com/eup57pb.png)
 
 Coil in Z direction results:
+
 
 ![](https://i.imgur.com/mBnbwau.png)
 ![](https://i.imgur.com/lYC8y8B.png)
@@ -74,3 +66,5 @@ Coil in X direction results:
 The three coils together:
 
 ![](https://i.imgur.com/eHWeNZj.png)
+
+\* in This one you can be seen if the coils touch each other

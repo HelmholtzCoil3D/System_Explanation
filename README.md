@@ -87,39 +87,80 @@ zDesiredField = 1.25           # The desired field in the center of the Helmholt
 ```
 Console results
 
-![](https://i.imgur.com/EVd3a4g.png)
+![](https://i.imgur.com/1mMmFIL.png)
 
 Graphic Results
 
 ![](https://i.imgur.com/mBnbwau.png)
 ![](https://i.imgur.com/lYC8y8B.png)
-
-#### 3D model
-
-With the high precision of the 3D printers ($\pm$ 1 um) the idea was doing the 3 helmholtz coils all together in the same mechanical part, 1 piece. With this, the misalignment problems would desappear, in this way would be interesting the give it a try, doing a 3D printed model to construct the coils.
-
-Misalignment example:
-<p align="center">
-  <img src="https://i.imgur.com/UBLSEGI.png">
-</p>
-
-To design the 3D model the utilized software was [solidWorks], a comercial software for 3D models design, good for geometric models. The design was made based in the simulator results:
-
 ##### Simulator results
 
-Wire External Diameter = 0.6 mm (Real Life), 0.66 (Project)
+Wire External Diameter = 0.6 mm 
 
 |Coils| Radius | Coil Width| Coil Height|
 |:-:|-|-|-|
 | Inner | 42.5 mm | 6.6 mm| 9.65 mm |
 | Middle | 56.15 mm | 4 mm| 5.5 mm |
 | External | 66.5 mm | 4.65 mm| 5.5 mm |
+**\* rouded values**
 
-And from those results the 3D model was done in the solidWorks and the result is seen in the following image:
+#### 3D models 
 
-![](https://i.imgur.com/0EmAI26.png)
+With the high precision of the 3D printers ($\pm$ 1 $\mu$m) the idea was doing the 3 helmholtz coils all together in the same mechanical part, 1 piece. With this, the misalignment problems would desappear.
 
-In the center of the structure, have some holes, they were thought in a way that another 3D model could be done to support the **magnetic sensor** of the system and then above the support for the magnetic sensor another 3D model to support the sample to be tested
+Misalignment example:
+<p align="center">
+  <img src="https://i.imgur.com/UBLSEGI.png">
+</p>
+
+To design the 3D model the utilized software was [solidWorks], a comercial software for 3D models design, good for geometric models. The design was made based in the simulating results. Besides the coils, the sensor and sample placement should be designed together with the coil, to make it easier to think the supports was separated and connected throught holes and pegs.
+
+##### 3 axis helmholtz coil 3D model
+
+The 3 axis helmholtz coil 3D model design can be seen in the following images:
+
+|![](https://i.imgur.com/Wzg3Njc.png)|![](https://i.imgur.com/6IBMPOh.png) | ![](https://i.imgur.com/uZLQaVv.png)|
+
+It has some holes inside to attach the sensor support and a bigger hole in the middle for the cables to link the sensor to the system. In the bottom some support points to make the coil stable in the table.
+
+##### Sensor and sample support 3D model
+
+After some tests, the model achieved for the PCB support is shown in the following image:
+
+|![](https://i.imgur.com/FJ0epzp.png) | ![](https://i.imgur.com/ayN4QcW.png)|
+
+<details>
+<summary> If you are viewing it in the repository</summary>
+
+All the files for the 3DModelFiles folder in this repository
+
+</details>
+
+This model perfectly fits inside the coils support model, using the internal part to support the sensor of the system and the more external pegs and holes to support the sample. Notice that the external support is designed in such a way that the sample stays in the middle of the coils. If the sample change, the user can design another 3D model for the support to adapt the coil usage to an especific application
+
+##### Pegs 3D model
+
+To attach the PCB support to the coils support some pegs was designed with diferent diameters, using the fact that the printer has more precision than $\pm$1 $\mu$m:
+|![](https://i.imgur.com/ucujuqK.png) | ![](https://i.imgur.com/xjzAjc2.png)|
+
+Using 50 $\mu$m of difference between the pegs, will make it safe to fit in the previous models holes, testing which diameter is beter to use.
+
+#### 3D Prints
+
+The company have its own 3D printers, one with really high resolutions for tiny parts and another with less resolution but with more space to print. The material is not so rigid in the high resolution printer and the prints have problems in the pos-printing process that causes some bendding problems, so for the coils support the print was made by [Reprap] company, that was more cheap and perfect printed than with the company printer. For the other models, the company printer was enought to do the job.
+
+The [Reprap] 3D printer size limit is around 32x36x42 cm so with the largest coil external diameter around 15 cm, so if the company needs a bigger coil with different especification, it can be printed.
+
+The Coils support was ordered and the result can be seen:
+<details>
+<summary> <b>Coil support print result</b> </summary>
+
+![](https://i.imgur.com/snpOLTE.gif)
+
+**There's a sensor support inside of the coils printed with the company printer, that fitted really nice inside**
+</details>
+
+The another parts were printed in the company printer
 
 #stuff about the 3D models
 All the supports are binded with pegs that are printed too
@@ -128,11 +169,8 @@ All the supports are binded with pegs that are printed too
 and printed in [Reprap]
 
 
-
 #stuff about the 3D models end
 
-
-![](1https://i.imgur.com/snpOLTE.gif)
 
 
 #### Practical results
@@ -178,3 +216,7 @@ and printed in [Reprap]
 [solidWorks]:https://www.solidworks.com/
 
 [Reprap]:https://www.reprap.cc/
+
+[Missing Image]:https://i.imgur.com/0EmAI26.png
+
+![Missing Image](https://i.imgur.com/0EmAI26.png)
