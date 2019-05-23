@@ -8,15 +8,14 @@ The idea behind this project is to create a homogeneous field in some defined re
 
 <p align="center">
   <img src="https://i.imgur.com/ytuayWB.png/">
-</p>
-
-<p align="center">
+  
   <img src="https://i.imgur.com/5vaQXRf.png">
 </p>
 
 <p align="center">
   <img src="https://i.imgur.com/cQSHDOd.png">
 </p>
+
 
 The desired features in this case would be a region with errors bellow 1%, the maximium difference of the magnetic field strenght in two different points and angles with less than 1° of difference between two different points of the homogeneous region. A magnetic flux density range of 1 uT to 1 mT is desired in this region.
 
@@ -37,8 +36,9 @@ Knowing that the magnetic field will be linear, so a 3 axis Helmholtz coil can b
 ##  Blocks diagram
 
 The system blocks diagram can be represented as follows:
-
-![](https://i.imgur.com/3Lv7iL5.png)
+<p align="center">
+  <img src="https://i.imgur.com/3Lv7iL5.png">
+</p>
 
 The main parts of the system:
 -   Helmholtz coils to generate the field
@@ -91,8 +91,11 @@ Console results
 
 Graphic Results
 
-![](https://i.imgur.com/mBnbwau.png)
-![](https://i.imgur.com/lYC8y8B.png)
+<p align="center">
+  <img src="https://i.imgur.com/QWl2P50.png">
+  <img src="https://i.imgur.com/fIQKE3O.png">
+</p>
+
 ##### Simulator results
 
 Wire External Diameter = 0.6 mm 
@@ -119,7 +122,11 @@ To design the 3D model the utilized software was [solidWorks], a comercial softw
 
 The 3 axis helmholtz coil 3D model design can be seen in the following images:
 
-|![](https://i.imgur.com/Wzg3Njc.png)|![](https://i.imgur.com/6IBMPOh.png) | ![](https://i.imgur.com/uZLQaVv.png)|
+<p align="center">
+  <img src="https://i.imgur.com/1w3yt66.png">
+  <img src="https://i.imgur.com/ZZijRJx.png">
+  <img src="https://i.imgur.com/SFO0BPS.png">
+</p>
 
 It has some holes inside to attach the sensor support and a bigger hole in the middle for the cables to link the sensor to the system. In the bottom some support points to make the coil stable in the table.
 
@@ -127,7 +134,10 @@ It has some holes inside to attach the sensor support and a bigger hole in the m
 
 After some tests, the model achieved for the PCB support is shown in the following image:
 
-|![](https://i.imgur.com/FJ0epzp.png) | ![](https://i.imgur.com/ayN4QcW.png)|
+<p align="center">
+  <img src="https://i.imgur.com/OIBXMG0.png">
+  <img src="https://i.imgur.com/UGoYnNm.png">
+</p>
 
 <details>
 <summary> If you are viewing it in the repository</summary>
@@ -141,7 +151,11 @@ This model perfectly fits inside the coils support model, using the internal par
 ##### Pegs 3D model
 
 To attach the PCB support to the coils support some pegs was designed with diferent diameters, using the fact that the printer has more precision than $\pm$1 $\mu$m:
-|![](https://i.imgur.com/ucujuqK.png) | ![](https://i.imgur.com/xjzAjc2.png)|
+
+<p align="center">
+  <img src="https://i.imgur.com/ucujuqK.png">
+  <img src="https://i.imgur.com/xfdn5YZ.png">
+</p>
 
 Using 50 $\mu$m of difference between the pegs, will make it safe to fit in the previous models holes, testing which diameter is beter to use.
 
@@ -149,27 +163,43 @@ Using 50 $\mu$m of difference between the pegs, will make it safe to fit in the 
 
 The company have its own 3D printers, one with really high resolutions for tiny parts and another with less resolution but with more space to print. The material is not so rigid in the high resolution printer and the prints have problems in the pos-printing process that causes some bendding problems, so for the coils support the print was made by [Reprap] company, that was more cheap and perfect printed than with the company printer. For the other models, the company printer was enought to do the job.
 
-The [Reprap] 3D printer size limit is around 32x36x42 cm so with the largest coil external diameter around 15 cm, so if the company needs a bigger coil with different especification, it can be printed.
+The [Reprap] 3D printer size limit is around **32**x**36**x**42** **cm** so with the largest coil external diameter around 15 cm, so if the company needs a bigger coil with different especification, it can be printed.
 
 The Coils support was ordered and the result can be seen:
 <details>
-<summary> <b>Coil support print result</b> </summary>
-
-![](https://i.imgur.com/snpOLTE.gif)
+<summary> <b>Click here to see the Coil support print result</b> </summary>
+<p align="center">
+  <img src="https://i.imgur.com/snpOLTE.gif">
+</p>
 
 **There's a sensor support inside of the coils printed with the company printer, that fitted really nice inside**
 </details>
 
-The another parts were printed in the company printer
+The Sensor/Sample support and pegs were printed in the CTR high resolution printer:
 
-#stuff about the 3D models
-All the supports are binded with pegs that are printed too
+<p align="center">
+  <img src="https://i.imgur.com/pbrw9hg.png">
+  
+  <img src="https://i.imgur.com/d36SHwn.png">
+  
+  <img src="https://i.imgur.com/iP3jZjX.png">
+</p>
 
+Printed pegs:
 
-and printed in [Reprap]
+<p align="center">
+  <img src="https://i.imgur.com/zDgtWUj.png">  
+</p>
 
+#### Coils winding
 
-#stuff about the 3D models end
+After doing the windings really carefull, maintaining the [wire] stretched while doing each turn, it helped to get the wire really fit in the coils support using [hot glue] to mantain the cable fixed., the result can be seen in the following image:
+
+<p align="center">
+  <img src="https://i.imgur.com/QoLNiNV.png">
+</p>
+
+Each of the six coils was done individualy, doing the inside coils first, and then connected with a solder point with the respective pair (2 coils in X to form the X helmholtz coil for example).
 
 
 
@@ -217,6 +247,12 @@ and printed in [Reprap]
 
 [Reprap]:https://www.reprap.cc/
 
+[hot glue]:https://en.wikipedia.org/wiki/Hot-melt_adhesive
+
 [Missing Image]:https://i.imgur.com/0EmAI26.png
 
+[wire]:https://at.rs-online.com/web/p/kupferdrahte/0357750/
+
 ![Missing Image](https://i.imgur.com/0EmAI26.png)
+
+![tiny Missing Image](https://i.imgur.com/zDgtWUj.png)
