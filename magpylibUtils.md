@@ -1,3 +1,4 @@
+```python
 # -*- coding: utf-8 -*-
 """
 Created on Tue Feb  5 11:01:56 2019
@@ -501,6 +502,7 @@ def plotBxyz(collectionToPlot, collectionToCompare = magpy.Collection(), plotBou
         collectionToPlot.rotate(90,[0,1,0],anchor=[0,0,0])
         collectionToCompare.rotate(90,[0,1,0],anchor=[0,0,0])
         
+        
 #%% nextCoilMinimalDiameter function 
 def nextCoilMinimalDiameter(coilExtDiameter = 1, coilExtlengthBetweenCoils = 1):
     """ 
@@ -752,3 +754,63 @@ def desiredCoilDiameter(nIteration = 1000, breakCondition = 0.005, desiredField 
     
     return coilIntDiameter
 
+ # Setting input values -------------------------------------------------------------------------------------------------------------------------
+ 
+def coilDesign(nIteration = 40,
+               initialValue = 0.1,
+               desiredField = 0.1, 
+               I = 0.1, 
+               wireDiameter=0.6, 
+               loopsInEachEvenLayer=5, 
+               evenLayers=5, oddLayers=5, 
+               orientation='z',
+               relativeDistance = 1/3,
+               maxError = 0.1,
+               color = 'k',
+               wireResistence = 0.5):
+    
+    
+    # ----------------------------------------------------------------------------------------------------------------------------------------------
+    # Finding the right coil internal diameter to have the desired field with the zCoilCurrent in A
+    newCoilIntDiameter = desiredCoilDiameter(nIteration = nIteration, 
+                                              breakCondition = desiredField*maxError/100, 
+                                              initialValue = initialValue,
+                                              desiredField = desiredField, 
+                                              I = I, 
+                                              coilIntDiameter = initialValue, 
+                                              wireDiameter=wireDiameter, 
+                                              loopsInEachEvenLayer=loopsInEachEvenLayer, 
+                                              evenLayers=evenLayers, oddLayers=oddLayers, 
+                                              orientation=orientation,
+                                              relativeDistance = relativeDistance)
+    # ---------------------------------------------------------------------------------------------
+    
+    
+    # Constructing the desired coil ---------------------------------------------------------------
+    Coil = helmholtzCoil(color = color,I = I, 
+                           coilIntDiameter = newCoilIntDiameter, 
+                           wireDiameter=wireDiameter, 
+                           loopsInEachEvenLayer=loopsInEachEvenLayer, 
+                           evenLayers=evenLayers, oddLayers=oddLayers, 
+                           coilsDistance=newCoilIntDiameter/2, 
+                           orientation=orientation, 
+                           relativeDistance = relativeDistance)
+    # --------------------------------------------------------------------------------------------- 
+    
+    # calculating the energy dissipation by joule effect --------------------------------------------------------------------------------------------
+    coilExtDiameter = newCoilIntDiameter
+    wireLenght = 0
+    
+    for i in range(0,evenLayers + oddLayers):
+        if (i % 2) == 0:
+            wireLenght += coilExtDiameter*pi*loopsInEachEvenLayer
+        elif (i % 2) == 1:
+            wireLenght += coilExtDiameter*pi*(loopsInEachEvenLayer-1)
+        coilExtDiameter += ((3)**(1/2))*wireDiameter/2
+    
+    wireLenghtMeters = 2*wireLenght/1000
+    coilResistence = wireResistence*wireLenghtMeters
+    coilMaxPower = coilResistence*(I**2)
+
+    
+    return Coil, newCoilIntDiameter, coilExtDiameter, coilResistence, coilMaxPower, wireLenghtMeters
