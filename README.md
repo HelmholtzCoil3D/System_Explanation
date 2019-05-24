@@ -1,4 +1,7 @@
 # 3D Helmholtz coil system
+
+This document explains how the system was made and how it works, with the purpose to make the reproduction of the project possible.
+
 [TOC]
 # Objective of the project
 
@@ -126,19 +129,18 @@ Graphic Results
   <img src="https://i.imgur.com/ByeGGDB.png">
 </p>
 
-#-----ADD SOME TEXT EXPLAINING THE IMAGES----------------
-
-
-#------------------------------------------------------------
-
 <p align="center">
   <img src="https://i.imgur.com/bi9lrz0.png">
   <img src="https://i.imgur.com/nGmvyGo.png">
 </p>
+<p align="center">
+  <img src="https://i.imgur.com/zuLQytt.png">
+  <img src="https://i.imgur.com/QZL5wMg.png">
+  <img src="https://i.imgur.com/Mi18fzv.png">
+</p>
 
-https://i.imgur.com/zuLQytt.png
-https://i.imgur.com/QZL5wMg.png
-https://i.imgur.com/Mi18fzv.png
+
+
 
 ### Simulator results
 
@@ -203,6 +205,17 @@ To attach the PCB support to the coils support some pegs was designed with difer
 
 Using 50 $\mu$m of difference between the pegs, will make it safe to fit in the previous models holes, testing which diameter is beter to use.
 
+### 3 feet support
+
+induction problems etc blablabla
+
+<p align="center">
+  <img src="https://i.imgur.com/32UAFZo.png">
+  <img src="https://i.imgur.com/8IpZaQa.png">
+  <img src="https://i.imgur.com/kGm5bcq.png">
+</p>
+
+
 ## 3D Print results
 
 The company have its own 3D printers, one with really high resolutions for tiny parts and another with less resolution but with more space to print. The material is not so rigid in the high resolution printer and the prints have problems in the pos-printing process that causes some bendding problems, so for the coils support the print was made by [Reprap] Austria, that was more cheap and perfect printed than with the company printer. For the other models, the company printer was enought to do the job.
@@ -222,17 +235,24 @@ The Coils support was ordered and the result can be seen:
 The Sensor/Sample support and pegs were printed in the CTR high resolution printer:
 
 <p align="center">
-  <img src="https://i.imgur.com/pbrw9hg.png">
-  
-  <img src="https://i.imgur.com/d36SHwn.png">
-  
-  <img src="https://i.imgur.com/iP3jZjX.png">
+  <img src="https://i.imgur.com/mr3jVFE.png">
+  <img src="https://i.imgur.com/0J0pVPR.png">
 </p>
 
+<p align="center">
+  <img src="https://i.imgur.com/FMYslBA.png">  
+  <img src="https://i.imgur.com/d5Cf9GZ.png">  
+</p>
 Printed pegs:
 
 <p align="center">
-  <img src="https://i.imgur.com/zDgtWUj.png">  
+  <img src="https://i.imgur.com/mdp87lR.png">  
+</p>
+
+3 Feet support:
+
+<p align="center">
+  <img src="https://i.imgur.com/0nlz94t.png">  
 </p>
 
 ## Coils winding
@@ -240,20 +260,20 @@ Printed pegs:
 After doing the windings really carefull, maintaining the [wire] stretched while doing each turn, it helped to get the wire really fit in the coils support. The arrangement to stretch the wire can be seen in the next image, its an improvised tool that makes some pressure in the reel, extremely important to make the coils the most near to the simulation position of the wires.
 
 <p align="center">
-  <img src="https://i.imgur.com/zDgtWUj.png">  
+  <img src="https://i.imgur.com/IUi05BB.png">  
+  <img src="https://i.imgur.com/KXlm8cY.png">  
 </p>
 
  The [hot glue] was used to mantain the cables fixed in the coils suppor, the result of the 3 axis coil can be seen in the following image:
 
 <p align="center">
-  <img src="https://i.imgur.com/QoLNiNV.png">
+  <img src="https://i.imgur.com/l0JHXrs.png">
+  <img src="https://i.imgur.com/IkDBRM8.png">
 </p>
 
-Each of the six coils was done individualy, doing the inside coils first, and then connected with a solder point with the respective pair (2 coils in X direction to form the X helmholtz coil for example). The following image shows the connection between 2 coils:
 
-<p align="center">
-  <img src="https://i.imgur.com/zDgtWUj.png">  
-</p>
+
+Each of the six coils was done individualy, doing the inside coils first, and then connected with a solder point with the respective pair (2 coils in X direction to form the X helmholtz coil for example)
 
 ## Practical results
 
@@ -271,18 +291,18 @@ Coil teorethical features:
 |MagField/Current ration| 2.5 |
 |Coil resistence| 5.264 $\Omega$|
 
-Mesured resistence, inductance:
+Mesured resistence ($\Omega$), inductance (mH):
 
 <p align="center">
-  <img src="https://i.imgur.com/zDgtWUj.png"> 
-  <img src="https://i.imgur.com/zDgtWUj.png">  
+  <img src="https://i.imgur.com/x8iIYAy.png"> 
+  <img src="https://i.imgur.com/LVjreJY.png">  
 </p>
 
 The mesured field with the 500 mA (powersupply and sensor image):
 
 <p align="center">
-  <img src="https://i.imgur.com/zDgtWUj.png">  
-  <img src="https://i.imgur.com/zDgtWUj.png">  
+  <img src="https://i.imgur.com/nDOGn0i.png">  
+  <img src="https://i.imgur.com/XJ9kA3F.png">  
 </p>
 
 ### Middle coil
@@ -300,15 +320,15 @@ Coil teorethical features:
 Mesured resistence, inductance:
 
 <p align="center">
-  <img src="https://i.imgur.com/zDgtWUj.png"> 
-  <img src="https://i.imgur.com/zDgtWUj.png">  
+  <img src="https://i.imgur.com/q5UDi7a.png"> 
+  <img src="https://i.imgur.com/MBkaaHd.png">  
 </p>
 
 The mesured field with the 500 mA (powersupply and sensor image):
 
 <p align="center">
-  <img src="https://i.imgur.com/zDgtWUj.png">  
-  <img src="https://i.imgur.com/zDgtWUj.png">  
+  <img src="https://i.imgur.com/IYxx4Vd.png">  
+  <img src="https://i.imgur.com/6W8auCz.png">
 </p>
 
 ### External coil
@@ -326,26 +346,23 @@ Coil teorethical features:
 Mesured resistence, inductance:
 
 <p align="center">
-  <img src="https://i.imgur.com/zDgtWUj.png"> 
-  <img src="https://i.imgur.com/zDgtWUj.png">  
+  <img src="https://i.imgur.com/Za583Jh.png"> 
+  <img src="https://i.imgur.com/A6V55Mt.png">  
 </p>
 
 The mesured field with the 500 mA (powersupply and sensor image):
 
 <p align="center">
-  <img src="https://i.imgur.com/zDgtWUj.png">  
-  <img src="https://i.imgur.com/zDgtWUj.png">  
+  <img src="https://i.imgur.com/ennhagm.png">  
+  <img src="https://i.imgur.com/627mrrd.png">  
 </p>
-
-# Magnetic sensor
-
-
 
 # Controller
 
-## Current controller
-## Polaraty controller
-## Sensor controller
+<p align="center">
+  <img src="https://i.imgur.com/lGi1RIw.png">   
+</p>
+
 
 ## Power Supply
 
@@ -353,13 +370,94 @@ The mesured field with the 500 mA (powersupply and sensor image):
 
 ## MCU
 
+# Magnetic sensor
+
+
+# PCBs
+
+<p align="center">
+  <img src="https://i.imgur.com/K3De7Ns.png">  
+  <img src="https://i.imgur.com/h4xlgdN.png">  
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/iOp6hKP.png">  
+  <img src="https://i.imgur.com/zlb893Q.png">  
+</p>
+
+
+<p align="center">
+  <img src="https://i.imgur.com/B85BN9M.png">  
+  <img src="https://i.imgur.com/tkJYENF.png">  
+</p>
+
+
+<p align="center">
+  <img src="https://i.imgur.com/33onxWX.png">  
+  <img src="https://i.imgur.com/1eaJG9P.png">  
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/R0zvZy2.png">  
+</p>
+
+
+<p align="center">
+  <img src="https://i.imgur.com/qHP6Xhr.png">   
+</p>
+
 
 # Interface
+
 
 # Integration
 
 
+# Final result
 
+
+<p align="center">
+  <img src="https://i.imgur.com/o32hRec.png"> 
+  <img src="https://i.imgur.com/eogJmTj.png">    
+</p>
+
+
+<p align="center">
+  <img src="https://i.imgur.com/8XdFvad.png">    
+</p>
+
+
+# System applications
+
+<details>
+<summary> <b>Click here to see the procedure to set the zero field</b> </summary>
+<p align="center">
+  <img src="https://i.imgur.com/YYwEtKX.gif">
+</p>
+
+</details>
+<details>
+<summary> <b>Click here to see the compass in the zero field</b> </summary>
+<p align="center">
+  <img src="https://i.imgur.com/6OjJ9gG.gif">
+</p>
+</details>
+
+
+<details>
+<summary> <b>Youtube videos</b> </summary>
+
+[Compass zero field demonstration]
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eRR1c4607lU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+[Compass zero field procedure]
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aR3ZOZWw4vM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+</details>
+
+[Compass zero field demonstration]:https://www.youtube.com/watch?v=eRR1c4607lU
+
+[Compass zero field procedure]:https://www.youtube.com/watch?v=aR3ZOZWw4vM&t=
 
 [Helmholtz coil calculator]:HelmholtzCoilCalculator.md
 
