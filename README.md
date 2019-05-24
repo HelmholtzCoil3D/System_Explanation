@@ -448,6 +448,7 @@ The mesured field with the 500 mA (powersupply and sensor image):
 <summary> <b>Youtube videos</b> </summary>
 
 [Compass zero field demonstration]
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/eRR1c4607lU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 [Compass zero field procedure]
