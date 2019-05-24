@@ -265,27 +265,42 @@ pre[data-line] .line-highlight[data-end]:after {
       <h1 class="mume-header" id="3d-helmholtz-coil-system">3D Helmholtz coil system</h1>
 
 <ul>
-<li><a href="#3d-helmholtz-coil-system">3D Helmholtz coil system</a>
-<ul>
+<li><a href="#3d-helmholtz-coil-system">3D Helmholtz coil system</a></li>
 <li><a href="#objective-of-the-project">Objective of the project</a></li>
 <li><a href="#base-knowledge">Base Knowledge</a></li>
 <li><a href="#blocks-diagram">Blocks diagram</a></li>
-<li><a href="#helmholtz-coils-design">Helmholtz coils design</a><br>
-* <a href="#simulator">Simulator</a><br>
-* <a href="#simulator-results">Simulator results</a><br>
-* <a href="#3d-model">3D model</a></li>
+<li><a href="#helmholtz-coils-design">Helmholtz coils design</a>
+<ul>
+<li><a href="#simulator">Simulator</a></li>
 </ul>
 </li>
-<li><a href="#stuff-about-the-3d-models">stuff about the 3D models</a></li>
-<li><a href="#stuff-about-the-3d-models-end">stuff about the 3D models end</a><br>
-* <a href="#practical-results">Practical results</a>
+<li><a href="#-">------------------------------------------------------------</a><br>
+* <a href="#simulator-results">Simulator results</a>
 <ul>
+<li><a href="#3d-models">3D models</a>
+<ul>
+<li><a href="#3-axis-helmholtz-coil-3d-model">3 axis helmholtz coil 3D model</a></li>
+<li><a href="#sensor-and-sample-support-3d-model">Sensor and sample support 3D model</a></li>
+<li><a href="#pegs-3d-model">Pegs 3D model</a></li>
+</ul>
+</li>
+<li><a href="#3d-print-results">3D Print results</a></li>
+<li><a href="#coils-winding">Coils winding</a></li>
+<li><a href="#practical-results">Practical results</a>
+<ul>
+<li><a href="#inner-coil">Inner coil</a></li>
+<li><a href="#middle-coil">Middle coil</a></li>
+<li><a href="#external-coil">External coil</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#magnetic-sensor">Magnetic sensor</a></li>
-<li><a href="#controller">Controller</a><br>
-* <a href="#current-controller">Current controller</a><br>
-* <a href="#polaraty-controller">Polaraty controller</a><br>
-* <a href="#sensor-controller">Sensor controller</a>
+<li><a href="#controller">Controller</a>
 <ul>
+<li><a href="#current-controller">Current controller</a></li>
+<li><a href="#polaraty-controller">Polaraty controller</a></li>
+<li><a href="#sensor-controller">Sensor controller</a></li>
 <li><a href="#power-supply">Power Supply</a></li>
 <li><a href="#h-bridges">H-bridges</a></li>
 <li><a href="#mcu">MCU</a></li>
@@ -294,43 +309,41 @@ pre[data-line] .line-highlight[data-end]:after {
 <li><a href="#interface">Interface</a></li>
 <li><a href="#integration">Integration</a></li>
 </ul>
-</li>
-</ul>
-<h2 class="mume-header" id="objective-of-the-project">Objective of the project</h2>
+<h1 class="mume-header" id="objective-of-the-project">Objective of the project</h1>
 
 <p>This project aim is to prototype some kind of system control it automaticaly and make some fields setups in static applications.</p>
 <p>The idea behind this project is to create a homogeneous field in some defined region where magnetic samples can be tested with a totaly known field</p>
 <p align="center">
   <img src="https://i.imgur.com/ytuayWB.png/">
-</p>
-<p align="center">
   <img src="https://i.imgur.com/5vaQXRf.png">
 </p>
 <p align="center">
   <img src="https://i.imgur.com/cQSHDOd.png">
 </p>
 <p>The desired features in this case would be a region with errors bellow 1%, the maximium difference of the magnetic field strenght in two different points and angles with less than 1&#xB0; of difference between two different points of the homogeneous region. A magnetic flux density range of 1 uT to 1 mT is desired in this region.</p>
-<p>The region defined for the prototype at first is a 20 mm&#xB3; region</p>
+<p>The region defined for the prototype at first is a <strong>20 mm&#xB3;</strong>  region</p>
 <p><strong>The system itself just generate the field</strong>, the magnetic sample must have its own system to generate the data for posterior analysis. Analisys can be made based in the known direction and amplitude of the homogeneous region magnetic field.</p>
-<h2 class="mume-header" id="base-knowledge">Base Knowledge</h2>
+<h1 class="mume-header" id="base-knowledge">Base Knowledge</h1>
 
 <p>To create a homogeneous field in some free space region, the concept used was the <a href="https://en.wikipedia.org/wiki/Helmholtz_coil">Helmholtz coil</a> that can create a homogeneous field inward from the coils to the geometric center of the estructure, the more in the center, the more homogeneous the field is.</p>
 <p>Exitating the coils with a known current generates a known <a href="https://en.wikipedia.org/wiki/Magnetic_field">magnetic field</a> (H) that is related to the magnetic flux density (B) by the permeability (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>&#x3BC;</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">&#x3BC;</span></span></span></span>) of the material, in this case the air (<a href="https://en.wikipedia.org/wiki/Permeability_(electromagnetism)">1.00000037</a>)</p>
 <p>The B can <a href="https://en.wikipedia.org/wiki/Saturation_(magnetic)">saturate</a> depending on the material, in this case it will not happen so there are no linearity problems</p>
 <p>Knowing that the magnetic field will be linear, so a 3 axis Helmholtz coil can be design to generate the arbitrary homogeneous magnetic field, remembering that this system must compensate the <a href="https://en.wikipedia.org/wiki/Earth%27s_magnetic_field">earth magnetic field</a></p>
-<h2 class="mume-header" id="blocks-diagram">Blocks diagram</h2>
+<h1 class="mume-header" id="blocks-diagram">Blocks diagram</h1>
 
 <p>The system blocks diagram can be represented as follows:</p>
-<p><img src="https://i.imgur.com/3Lv7iL5.png" alt></p>
+<p align="center">
+  <img src="https://i.imgur.com/3Lv7iL5.png">
+</p>
 <p>The main parts of the system:</p>
 <ul>
 <li>Helmholtz coils to generate the field</li>
 <li>Controller to control the generated field throught magnetic sensors readings</li>
 <li>Interface to give properly the user commands to the controller</li>
 </ul>
-<h2 class="mume-header" id="helmholtz-coils-design">Helmholtz coils design</h2>
+<h1 class="mume-header" id="helmholtz-coils-design">Helmholtz coils design</h1>
 
-<h4 class="mume-header" id="simulator">Simulator</h4>
+<h2 class="mume-header" id="simulator">Simulator</h2>
 
 <p>To design the needed helmholtz coils, an open source python library was used, <a href="https://github.com/magpylib/magpylib">magpylib</a>, this library is capable to calculate magnetic field of permanent magnets and current lines or circles.</p>
 <p>In fact the application is static, so the helmholtz can projected as current loops placed in a helmholtz coil shape.</p>
@@ -341,10 +354,10 @@ pre[data-line] .line-highlight[data-end]:after {
 <p align="center">
   <img src="https://i.imgur.com/ME0H3qo.png">
 </p>
-<p>The details about the calculator can be seen in the <a href="HelmholtzCoilCalculator.md">Helmholtz coil calculator</a> file. Giving some parameters to the calculator, it gives us the necessary coil diameter to achieve the desired field in the center of the coil and graphics that shows the field strenght in the 3 vectors of the field separeted (x,y,z) and from this an analysis can be made to determine the homogenity of the field generated by each coil, amplitude and angle error relative to the center in the desired homogeneous region. Following an example for the z axis coil.</p>
-<p>Input parameters</p>
+<p>The details about the calculator can be seen in the <a href="HelmholtzCoilCalculator.md">Helmholtz coil calculator</a> and <a href="magpylibUtils.md">Auxiliar library</a> files. Giving some parameters to the calculator, it gives us the necessary coil diameter to achieve the desired field in the center of the coil and graphics that shows the field strenght in the 3 vectors of the field separeted (x,y,z) and from this an analysis can be made to determine the homogenity of the field generated by each coil, amplitude and angle error relative to the center in the desired homogeneous region. Following an example for the z axis coil.</p>
+<p>Input parameters:</p>
 <pre data-role="codeBlock" data-info="python" class="language-python"><span class="token comment"># have to use a little bit bigger value than wireExternalDiameter, if not, the wire will not fit inside</span>
-AllCoilsWireDiameter <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">0.56</span> <span class="token operator">+</span> <span class="token number">0.047</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">1.09</span>   <span class="token comment"># Wire diameter in mm (from dataSheet - https://at.rs-online.com/web/p/kupferdrahte/0357750/)</span>
+AllCoilsWireDiameter <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">0.56</span> <span class="token operator">+</span> <span class="token number">0.047</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">1.09</span>   <span class="token comment"># Wire diameter in mm (from dataSheet)</span>
 
 minRes <span class="token operator">=</span> <span class="token number">0.06736</span>                            <span class="token comment"># Ohms/m (from dataSheet)</span>
 nominal <span class="token operator">=</span> <span class="token number">0.06940</span>                           <span class="token comment"># Ohms/m (from dataSheet)</span>
@@ -352,19 +365,51 @@ maxRes <span class="token operator">=</span> <span class="token number">0.07153<
 
 wireResistence <span class="token operator">=</span> maxRes                     <span class="token comment"># Ohms/m (from dataSheet)</span>
 
+
+<span class="token comment"># z First Coil configuration</span>
+
 zInitialValueCoilDiameter <span class="token operator">=</span> <span class="token number">80</span> <span class="token comment"># Initial value for the function that calculates the precise diameter</span>
+
 
 zCoilCurrent <span class="token operator">=</span> <span class="token number">0.5</span>             <span class="token comment"># Amperes</span>
 zLoopsInEachEvenLayer <span class="token operator">=</span> <span class="token number">10</span>     <span class="token comment"># The number of loops in each layer</span>
 zEvenLayers <span class="token operator">=</span> <span class="token number">7</span>                <span class="token comment"># The evenlayers always have to be equal to oddLayers or oddLayers + 1</span>
 zOddLayers <span class="token operator">=</span> <span class="token number">7</span>
 zDesiredField <span class="token operator">=</span> <span class="token number">1.25</span>           <span class="token comment"># The desired field in the center of the Helmholtz coil</span>
+
+<span class="token comment"># y Second Coil configuration</span>
+
+yCoilCurrent <span class="token operator">=</span> <span class="token number">0.5</span>             <span class="token comment"># Amperes</span>
+yLoopsInEachEvenLayer <span class="token operator">=</span> <span class="token number">6</span>      <span class="token comment"># The number of loops in each layer</span>
+yEvenLayers <span class="token operator">=</span> <span class="token number">3</span>                <span class="token comment"># The evenlayers always have to be oddLayers + 1 or equal oddLayers</span>
+yOddLayers <span class="token operator">=</span> <span class="token number">3</span>
+yDesiredField <span class="token operator">=</span> <span class="token number">0.25</span>           <span class="token comment"># The desired field in the center of the Helmholtz coil</span>
+
+<span class="token comment"># x Third Coil configuration</span>
+
+xCoilCurrent <span class="token operator">=</span> <span class="token number">0.5</span>             <span class="token comment"># Amperes</span>
+xLoopsInEachEvenLayer <span class="token operator">=</span> <span class="token number">7</span>      <span class="token comment"># The number of loops in each layer</span>
+xEvenLayers <span class="token operator">=</span> <span class="token number">3</span>                <span class="token comment"># The evenlayers always have to be oddLayers + 1 or equal oddLayers</span>
+xOddLayers <span class="token operator">=</span> <span class="token number">3</span>
+xDesiredField <span class="token operator">=</span> <span class="token number">0.25</span>           <span class="token comment"># The desired field in the center of the Helmholtz coil</span>
 </pre><p>Console results</p>
-<p><img src="https://i.imgur.com/1mMmFIL.png" alt></p>
+<p><img src="https://i.imgur.com/5LN3UF7.png" alt></p>
 <p>Graphic Results</p>
-<p><img src="https://i.imgur.com/mBnbwau.png" alt><br>
-<img src="https://i.imgur.com/lYC8y8B.png" alt></p>
-<h5 class="mume-header" id="simulator-results">Simulator results</h5>
+<p align="center">
+  <img src="https://i.imgur.com/wLzB2G6.png">
+  <img src="https://i.imgur.com/yHOCoEb.png">
+</p>
+<p align="center">
+  <img src="https://i.imgur.com/wLzB2G6.png">
+  <img src="https://i.imgur.com/fIQKE3O.png">
+</p>
+<p align="center">
+  <img src="https://i.imgur.com/wLzB2G6.png">
+  <img src="https://i.imgur.com/fIQKE3O.png">
+</p>
+<h1 class="mume-header" id="-">------------------------------------------------------------</h1>
+
+<h3 class="mume-header" id="simulator-results">Simulator results</h3>
 
 <p>Wire External Diameter = 0.6 mm</p>
 <table>
@@ -398,52 +443,224 @@ zDesiredField <span class="token operator">=</span> <span class="token number">1
 </tbody>
 </table>
 <p><strong>* rouded values</strong></p>
-<h4 class="mume-header" id="3d-model">3D model</h4>
+<h2 class="mume-header" id="3d-models">3D models</h2>
 
-<p>With the high precision of the 3D printers (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&#xB1;</mo></mrow><annotation encoding="application/x-tex">\pm</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">&#xB1;</span></span></span></span> 1 um) the idea was doing the 3 helmholtz coils all together in the same mechanical part, 1 piece. With this, the misalignment problems would desappear.</p>
+<p>With the high precision of the 3D printers (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&#xB1;</mo></mrow><annotation encoding="application/x-tex">\pm</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">&#xB1;</span></span></span></span> 1 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>&#x3BC;</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">&#x3BC;</span></span></span></span>m) the idea was doing the 3 helmholtz coils all together in the same mechanical part, 1 piece. With this, the misalignment problems would desappear.</p>
 <p>Misalignment example:</p>
 <p align="center">
   <img src="https://i.imgur.com/UBLSEGI.png">
 </p>
 <p>To design the 3D model the utilized software was <a href="https://www.solidworks.com/">solidWorks</a>, a comercial software for 3D models design, good for geometric models. The design was made based in the simulating results. Besides the coils, the sensor and sample placement should be designed together with the coil, to make it easier to think the supports was separated and connected throught holes and pegs.</p>
+<h3 class="mume-header" id="3-axis-helmholtz-coil-3d-model">3 axis helmholtz coil 3D model</h3>
+
 <p>The 3 axis helmholtz coil 3D model design can be seen in the following images:</p>
-<p>|<img src="https://i.imgur.com/Wzg3Njc.png" alt>|<img src="https://i.imgur.com/6IBMPOh.png" alt> | <img src="https://i.imgur.com/uZLQaVv.png" alt>|</p>
+<p align="center">
+  <img src="https://i.imgur.com/1w3yt66.png">
+  <img src="https://i.imgur.com/ZZijRJx.png">
+  <img src="https://i.imgur.com/SFO0BPS.png">
+</p>
 <p>It has some holes inside to attach the sensor support and a bigger hole in the middle for the cables to link the sensor to the system. In the bottom some support points to make the coil stable in the table.</p>
-<p>And from those results the 3D model was done in the solidWorks and the result is seen in the following image:</p>
-<p>In the center of the structure, have some holes, they were thought in a way that another 3D model could be done to support the <strong>magnetic sensor</strong> of the system and then above the support for the magnetic sensor another 3D model to support the sample to be tested</p>
-<h1 class="mume-header" id="stuff-about-the-3d-models">stuff about the 3D models</h1>
+<h3 class="mume-header" id="sensor-and-sample-support-3d-model">Sensor and sample support 3D model</h3>
 
-<p>All the supports are binded with pegs that are printed too</p>
-<p>and printed in <a href="https://www.reprap.cc/">Reprap</a></p>
-<h1 class="mume-header" id="stuff-about-the-3d-models-end">stuff about the 3D models end</h1>
-
+<p>After some tests, the model achieved for the PCB support is shown in the following image:</p>
+<p align="center">
+  <img src="https://i.imgur.com/OIBXMG0.png">
+  <img src="https://i.imgur.com/UGoYnNm.png">
+</p>
 <details>
-<summary> <b>Coil support print result</b> </summary>
-<p><img src="https://i.imgur.com/snpOLTE.gif" alt></p>
+<summary> If you are viewing it in the repository</summary>
+<p>All the files for the 3DModelFiles folder in this repository</p>
 </details>
-<h4 class="mume-header" id="practical-results">Practical results</h4>
+<p>This model perfectly fits inside the coils support model, using the internal part to support the sensor of the system and the more external pegs and holes to support the sample. Notice that the external support is designed in such a way that the sample stays in the middle of the coils. If the sample change, the user can design another 3D model for the support to adapt the coil usage to an especific application</p>
+<h3 class="mume-header" id="pegs-3d-model">Pegs 3D model</h3>
 
-<h2 class="mume-header" id="magnetic-sensor">Magnetic sensor</h2>
+<p>To attach the PCB support to the coils support some pegs was designed with diferent diameters, using the fact that the printer has more precision than <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&#xB1;</mo></mrow><annotation encoding="application/x-tex">\pm</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">&#xB1;</span></span></span></span>1 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>&#x3BC;</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">&#x3BC;</span></span></span></span>m:</p>
+<p align="center">
+  <img src="https://i.imgur.com/ucujuqK.png">
+  <img src="https://i.imgur.com/xfdn5YZ.png">
+</p>
+<p>Using 50 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>&#x3BC;</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">&#x3BC;</span></span></span></span>m of difference between the pegs, will make it safe to fit in the previous models holes, testing which diameter is beter to use.</p>
+<h2 class="mume-header" id="3d-print-results">3D Print results</h2>
 
-<h2 class="mume-header" id="controller">Controller</h2>
+<p>The company have its own 3D printers, one with really high resolutions for tiny parts and another with less resolution but with more space to print. The material is not so rigid in the high resolution printer and the prints have problems in the pos-printing process that causes some bendding problems, so for the coils support the print was made by <a href="https://www.reprap.cc/">Reprap</a> Austria, that was more cheap and perfect printed than with the company printer. For the other models, the company printer was enought to do the job.</p>
+<p>The Reprap Austria 3D printer size limit is <strong>32</strong>x<strong>36</strong>x<strong>42</strong> <strong>cm</strong>, been the largest coil external diameter around 15 cm, the printing size is fairly ok and if the company needs a bigger coil with different especification, it can be printed.</p>
+<p>The Coils support was ordered and the result can be seen:</p>
+<details>
+<summary> <b>Click here to see the Coil support print result</b> </summary>
+<p align="center">
+  <img src="https://i.imgur.com/snpOLTE.gif">
+</p>
+<p><strong>There&apos;s a sensor support inside of the coils printed with the company printer, that fitted really nice inside</strong></p>
+</details>
+<p>The Sensor/Sample support and pegs were printed in the CTR high resolution printer:</p>
+<p align="center">
+  <img src="https://i.imgur.com/pbrw9hg.png">
+  <img src="https://i.imgur.com/d36SHwn.png">
+  <img src="https://i.imgur.com/iP3jZjX.png">
+</p>
+<p>Printed pegs:</p>
+<p align="center">
+  <img src="https://i.imgur.com/zDgtWUj.png">  
+</p>
+<h2 class="mume-header" id="coils-winding">Coils winding</h2>
 
-<h4 class="mume-header" id="current-controller">Current controller</h4>
+<p>After doing the windings really carefull, maintaining the <a href="https://at.rs-online.com/web/p/kupferdrahte/0357750/">wire</a> stretched while doing each turn, it helped to get the wire really fit in the coils support. The arrangement to stretch the wire can be seen in the next image, its an improvised tool that makes some pressure in the reel, extremely important to make the coils the most near to the simulation position of the wires.</p>
+<p align="center">
+  <img src="https://i.imgur.com/zDgtWUj.png">  
+</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Hot-melt_adhesive">hot glue</a> was used to mantain the cables fixed in the coils suppor, the result of the 3 axis coil can be seen in the following image:</p>
+<p align="center">
+  <img src="https://i.imgur.com/QoLNiNV.png">
+</p>
+<p>Each of the six coils was done individualy, doing the inside coils first, and then connected with a solder point with the respective pair (2 coils in X direction to form the X helmholtz coil for example). The following image shows the connection between 2 coils:</p>
+<p align="center">
+  <img src="https://i.imgur.com/zDgtWUj.png">  
+</p>
+<h2 class="mume-header" id="practical-results">Practical results</h2>
 
-<h4 class="mume-header" id="polaraty-controller">Polaraty controller</h4>
+<p>To validate the python calculator, some measurements was made, like the resistence, inductance and generated field for each coil. Each coil is named now by inner, middle and external coil. The measurements are discussed subsequently.</p>
+<h3 class="mume-header" id="inner-coil">Inner coil</h3>
 
-<h4 class="mume-header" id="sensor-controller">Sensor controller</h4>
+<p>This coil is the most inside coil (inner), it has the most intense field of the 3 coils, that&apos;s why it&apos;s the inside coil and the one that have more windings.</p>
+<p>Coil teorethical features:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Current</td>
+<td>0 ~ 0.5 <em>A</em></td>
+</tr>
+<tr>
+<td>Magnetic field generated</td>
+<td>0 ~ 1.25 <em>mT</em></td>
+</tr>
+<tr>
+<td>MagField/Current ration</td>
+<td>2.5</td>
+</tr>
+<tr>
+<td>Coil resistence</td>
+<td>5.264 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">&#x3A9;</mi></mrow><annotation encoding="application/x-tex">\Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">&#x3A9;</span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+<p>Mesured resistence, inductance:</p>
+<p align="center">
+  <img src="https://i.imgur.com/zDgtWUj.png"> 
+  <img src="https://i.imgur.com/zDgtWUj.png">  
+</p>
+<p>The mesured field with the 500 mA (powersupply and sensor image):</p>
+<p align="center">
+  <img src="https://i.imgur.com/zDgtWUj.png">  
+  <img src="https://i.imgur.com/zDgtWUj.png">  
+</p>
+<h3 class="mume-header" id="middle-coil">Middle coil</h3>
 
-<h3 class="mume-header" id="power-supply">Power Supply</h3>
+<p>The middle coil is the one in between other 2 coils and its purpose is to cancel the earth magnetic field.</p>
+<p>Coil teorethical features:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Current</td>
+<td>0 ~ 0.5 <em>A</em></td>
+</tr>
+<tr>
+<td>Magnetic field generated</td>
+<td>0 ~ 0.25 <em>mT</em></td>
+</tr>
+<tr>
+<td>MagField/Current ration</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>Coil resistence</td>
+<td>1.689 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">&#x3A9;</mi></mrow><annotation encoding="application/x-tex">\Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">&#x3A9;</span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+<p>Mesured resistence, inductance:</p>
+<p align="center">
+  <img src="https://i.imgur.com/zDgtWUj.png"> 
+  <img src="https://i.imgur.com/zDgtWUj.png">  
+</p>
+<p>The mesured field with the 500 mA (powersupply and sensor image):</p>
+<p align="center">
+  <img src="https://i.imgur.com/zDgtWUj.png">  
+  <img src="https://i.imgur.com/zDgtWUj.png">  
+</p>
+<h3 class="mume-header" id="external-coil">External coil</h3>
 
-<h3 class="mume-header" id="h-bridges">H-bridges</h3>
+<p>External coil is the name of the further coil from the center, the biggest, same purpose as middle coil.</p>
+<p>Coil teorethical features:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Current</td>
+<td>0 ~ 0.5 <em>A</em></td>
+</tr>
+<tr>
+<td>Magnetic field generated</td>
+<td>0 ~ 0.25 <em>mT</em></td>
+</tr>
+<tr>
+<td>MagField/Current ration</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>Coil resistence</td>
+<td>2.356 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">&#x3A9;</mi></mrow><annotation encoding="application/x-tex">\Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">&#x3A9;</span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+<p>Mesured resistence, inductance:</p>
+<p align="center">
+  <img src="https://i.imgur.com/zDgtWUj.png"> 
+  <img src="https://i.imgur.com/zDgtWUj.png">  
+</p>
+<p>The mesured field with the 500 mA (powersupply and sensor image):</p>
+<p align="center">
+  <img src="https://i.imgur.com/zDgtWUj.png">  
+  <img src="https://i.imgur.com/zDgtWUj.png">  
+</p>
+<h1 class="mume-header" id="magnetic-sensor">Magnetic sensor</h1>
 
-<h3 class="mume-header" id="mcu">MCU</h3>
+<h1 class="mume-header" id="controller">Controller</h1>
 
-<h2 class="mume-header" id="interface">Interface</h2>
+<h2 class="mume-header" id="current-controller">Current controller</h2>
 
-<h2 class="mume-header" id="integration">Integration</h2>
+<h2 class="mume-header" id="polaraty-controller">Polaraty controller</h2>
+
+<h2 class="mume-header" id="sensor-controller">Sensor controller</h2>
+
+<h2 class="mume-header" id="power-supply">Power Supply</h2>
+
+<h2 class="mume-header" id="h-bridges">H-bridges</h2>
+
+<h2 class="mume-header" id="mcu">MCU</h2>
+
+<h1 class="mume-header" id="interface">Interface</h1>
+
+<h1 class="mume-header" id="integration">Integration</h1>
 
 <p><img src="https://i.imgur.com/0EmAI26.png" alt="Missing Image"></p>
+<p><img src="https://i.imgur.com/zDgtWUj.png" alt="tiny Missing Image"></p>
 
       </div>
       

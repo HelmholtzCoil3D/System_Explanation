@@ -218,12 +218,7 @@ if ZCOILPLOT:
         plotBxyz(collectionToPlot = connectorsCollection, plotBounds = [-10,10,-10,10], orientation = 'y',  orderMagnitude = 'uT',
                  fieldDif = False, figureSize = [16,8], nPlotPoints = 10, xyz0 = 0, figureTittle = 'Connectors field ("+z")\ny = 0', 
                  compareToCenter = True)
-        plotBxyz(collectionToPlot = connectorsCollection, plotBounds = [-10,10,-10,10], orientation = 'y',  orderMagnitude = 'uT',
-                 fieldDif = False, figureSize = [16,8], nPlotPoints = 10, xyz0 = 5, figureTittle = 'Connectors field ("+z")\ny = 5', 
-                 compareToCenter = True)
-        plotBxyz(collectionToPlot = connectorsCollection, plotBounds = [-10,10,-10,10], orientation = 'y',  orderMagnitude = 'uT',
-                 fieldDif = False, figureSize = [16,8], nPlotPoints = 10, xyz0 = 10, figureTittle = 'Connectors field ("+z")\ny = 10', 
-                 compareToCenter = True)
+
         
     zCoil.displaySystem()    
     
@@ -235,12 +230,7 @@ if YCOILPLOT:
         plotBxyz(collectionToPlot = connectorsCollection, plotBounds = [-10,10,-10,10], orientation = 'x',  orderMagnitude = 'uT',
                  fieldDif = False, figureSize = [16,8], nPlotPoints = 10, xyz0 = 0, figureTittle = 'Connectors field ("+y")\nx = 0', 
                  compareToCenter = True)
-        plotBxyz(collectionToPlot = connectorsCollection, plotBounds = [-10,10,-10,10], orientation = 'x',  orderMagnitude = 'uT',
-                 fieldDif = False, figureSize = [16,8], nPlotPoints = 10, xyz0 = 5, figureTittle = 'Connectors field ("+y")\nx = 5', 
-                 compareToCenter = True)
-        plotBxyz(collectionToPlot = connectorsCollection, plotBounds = [-10,10,-10,10], orientation = 'x',  orderMagnitude = 'uT',
-                 fieldDif = False, figureSize = [16,8], nPlotPoints = 10, xyz0 = 10, figureTittle = 'Connectors field ("+y")\nx = 10', 
-                 compareToCenter = True)
+
         
     yCoil.displaySystem()
 
@@ -252,12 +242,7 @@ if XCOILPLOT:
         plotBxyz(collectionToPlot = connectorsCollection, plotBounds = [-10,10,-10,10], orientation = 'z',  orderMagnitude = 'uT',
                  fieldDif = False, figureSize = [16,8], nPlotPoints = 10, xyz0 = 0, figureTittle = 'Connectors field ("+x")\nz = 0', 
                  compareToCenter = True)
-        plotBxyz(collectionToPlot = connectorsCollection, plotBounds = [-10,10,-10,10], orientation = 'z',  orderMagnitude = 'uT',
-                 fieldDif = False, figureSize = [16,8], nPlotPoints = 10, xyz0 = 5, figureTittle = 'Connectors field ("+x")\nz = 5', 
-                 compareToCenter = True)
-        plotBxyz(collectionToPlot = connectorsCollection, plotBounds = [-10,10,-10,10], orientation = 'z',  orderMagnitude = 'uT',
-                 fieldDif = False, figureSize = [16,8], nPlotPoints = 10, xyz0 = 10, figureTittle = 'Connectors field ("+x")\nz = 10', 
-                 compareToCenter = True)
+
         
     xCoil.displaySystem()
     
