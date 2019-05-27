@@ -230,6 +230,8 @@ The company have its own 3D printers, one with really high resolutions for tiny 
 
 The Reprap Austria 3D printer size limit is **32**x**36**x**42** **cm**, been the largest coil external diameter around 15 cm, the printing size is fairly ok and if the company needs a bigger coil with different especification, it can be printed.
 
+### Coils support print
+
 The Coils support was ordered and the result can be seen:
 <details>
 <summary> <b>Click here to see the Coil support print result</b> </summary>
@@ -242,6 +244,8 @@ The Coils support was ordered and the result can be seen:
 
 The Sensor/Sample support and pegs were printed in the CTR high resolution printer:
 
+### Sensor/Sample support
+
 <p align="center">
   <img src="https://i.imgur.com/mr3jVFE.png">
   <img src="https://i.imgur.com/0J0pVPR.png">
@@ -251,15 +255,16 @@ The Sensor/Sample support and pegs were printed in the CTR high resolution print
   <img src="https://i.imgur.com/FMYslBA.png">  
   <img src="https://i.imgur.com/d5Cf9GZ.png">  
 </p>
-Printed pegs:
+
+### Pegs
 
 <p align="center">
   <img src="https://i.imgur.com/mdp87lR.png">  
 </p>
 
-Following figure shows the 3 feet suppport printed in the lower resolution printer, that is also very good and it's used for bigger 3D models.
+## 3 Feet support
 
-3 Feet support:
+Following figure shows the 3 feet suppport printed in the lower resolution printer, that is also very good and it's used for bigger 3D models.
 
 <p align="center">
   <img src="https://i.imgur.com/0nlz94t.png">  
