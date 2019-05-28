@@ -34,9 +34,11 @@ This document explains how the system was made and how it works, with the purpos
   - [Power Supply](#power-supply)
   - [H-bridges](#h-bridges)
   - [MCU](#mcu)
+  - [New system Block Diagram](#new-system-block-diagram)
+- [Integration](#integration)
+  - [System validation](#system-validation)
 - [PCBs](#pcbs)
 - [Interface](#interface)
-- [Integration](#integration)
 - [Final result](#final-result)
 - [System applications](#system-applications)
 
@@ -279,9 +281,9 @@ The Coils support was ordered and the result can be seen:
 **There's a sensor support inside of the coils printed with the company printer, that fitted really nice inside**
 </details>
 
-The Sensor/Sample support and pegs were printed in the CTR high resolution printer:
-
 ### Sensor/Sample support
+
+Printed in the CTR high resolution printer:
 
 <p align="center">
   <img src="https://i.imgur.com/mr3jVFE.png">
@@ -294,6 +296,8 @@ The Sensor/Sample support and pegs were printed in the CTR high resolution print
 </p>
 
 ### Pegs
+
+Printed in the CTR high resolution printer:
 
 <p align="center">
   <img src="https://i.imgur.com/mdp87lR.png">
@@ -448,6 +452,11 @@ It's difficult to have all those tasks already integrated so some research was d
 
 In one way or another, a power supply must be used to provide the energy for the coils, can be as a voltage source or a current source. Operating in the voltage source mode would imply some external controller to adjust the right current for the coils, in other way with the current source mode, the power supply must have some kind of electronic current control integrated to use this in the system. After some research found [Rigol DP800] series, specifically the 831A model, that have 0.1 mA resolution of current control with 3 channels and can be controlled by software, perfect for this application.
 
+The software control can be done through the [python visa] that are some special libraries used to control mesurement equipaments.
+
+
+[python visa]:https://pyvisa.readthedocs.io/en/latest/
+
 <p align="center">
   <img src="https://i.imgur.com/gZmzW8N.png">
 </p>
@@ -497,19 +506,49 @@ The main code developed for the microcontroller is in those files:
 
 To have more robustness the system was developed in a [finite state machine] shape, with one state for each operation.
 
-When the microcontroller starts-up the first thing that it does is asking throught USB comunication, the size of the mean for each measurement and the time to do it, of course the bigger the measurements number, bigger the overhead will be.
+When the microcontroller starts-up the first thing that it does is asking throught USB comunication, the size of the mean for each measurement and the time (ms) to do it, of course the bigger the measurements number, bigger the overhead will be.
 
+After the 2 responses, the system start to operate in the state machine where there are 9 possible states besides Iddle:
 
-[finite state machine]:https://en.wikipedia.org/wiki/Finite-state_machine
+|State symbol| Description of the state|
+|:-:|:-|
+|'D'| Procedure mean size of measurements and return the mean in the USB comunication|
+|'I'| Sets the polarity to 'set' in the H-bridge connected to the channel 2 and sends back "'I' done!"|
+|'i'| Sets the polarity to 'reset' in the H-bridge connected to the channel 2 and sends back "'i' done!"|
+|'M'| Sets the polarity to 'set' in the H-bridge connected to the channel 3 and sends back "'M' done!"|
+|'m'| Sets the polarity to 'reset' in the H-bridge connected to the channel 3 and sends back "'m' done!"|
+|'E'| Sets the polarity to 'set' in the H-bridge connected to the channel 1  and sends back "'E' done!"|
+|'e'| Sets the polarity to 'reset' in the H-bridge connected to the channel 1 and sends back "'e' done!"|
+|'S'| Set all the polarities to a reference and sends back "'S' done!"|
+|'C'| Perform continuos measurement procedures and send then to the USB comunication without getting back to the IDDLE state|
 
-[atollic]:https://atollic.com/
+<p align="center">
+  <img src="https://i.imgur.com/5ZJICKJ.png">
+</p>
 
-[stm32CUBE]:https://www.st.com/en/ecosystems/stm32cube.html#overview
+The 'I', 'i', 'E' and 'e' states control just the digital pin for the [DRV8838DSGR] H-bridge, the 'M' and 'm' states control 4 digital pins to control the H-bridge formed by the relays [CPC1002N].
+
+After a state sending, the system response with a '"state" done!' for debug and flow control. The exception on this is the 'D' and 'C' states that respond with the data directly.
+
+The USB comunication is based on UART, the baud rate of the comunication is 256000 bauds
+
+## New system Block Diagram
+
+With the definition of how the control will be done and with what, The blocks diagram can be redrawed into the following image:
 
 <p align="center">
   <img src="https://i.imgur.com/lGi1RIw.png">
 </p>
 
+# Integration
+
+## System validation
+
+**\* image of the system with the evaluation boards**
+
+
+
+![tiny Missing Image](https://i.imgur.com/zDgtWUj.png)
 # PCBs
 
 <p align="center">
@@ -546,8 +585,7 @@ When the microcontroller starts-up the first thing that it does is asking throug
 
 # Interface
 
-
-# Integration
+n tem interface :'(
 
 
 # Final result
