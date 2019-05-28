@@ -2,7 +2,44 @@
 
 This document explains how the system was made and how it works, with the purpose to make the reproduction of the project possible.
 
-[TOC]
+- [3D Helmholtz coil system](#3d-helmholtz-coil-system)
+- [Objective of the project](#objective-of-the-project)
+- [Base Knowledge](#base-knowledge)
+- [Blocks diagram](#blocks-diagram)
+- [Helmholtz coils design](#helmholtz-coils-design)
+  - [Simulator](#simulator)
+    - [Input parameters:](#input-parameters)
+    - [Console results](#console-results)
+    - [Graphical Results](#graphical-results)
+    - [Simulator results](#simulator-results)
+  - [3D models](#3d-models)
+    - [3 axis helmholtz coil 3D model](#3-axis-helmholtz-coil-3d-model)
+    - [Sensor and sample support 3D model](#sensor-and-sample-support-3d-model)
+    - [Pegs 3D model](#pegs-3d-model)
+    - [3 feet support 3D model](#3-feet-support-3d-model)
+  - [3D Print results](#3d-print-results)
+    - [Coils support print](#coils-support-print)
+    - [Sensor/Sample support](#sensorsample-support)
+    - [Pegs](#pegs)
+  - [3 Feet support](#3-feet-support)
+  - [Coils winding](#coils-winding)
+  - [Practical results](#practical-results)
+    - [Inner coil](#inner-coil)
+    - [Middle coil](#middle-coil)
+    - [External coil](#external-coil)
+    - [Data analisys](#data-analisys)
+- [Magnetic sensor](#magnetic-sensor)
+- [need to explain some things here](#need-to-explain-some-things-here)
+- [Controller](#controller)
+  - [Power Supply](#power-supply)
+  - [H-bridges](#h-bridges)
+  - [MCU](#mcu)
+- [PCBs](#pcbs)
+- [Interface](#interface)
+- [Integration](#integration)
+- [Final result](#final-result)
+- [System applications](#system-applications)
+
 # Objective of the project
 
 This project aim is to prototype some kind of system control it automaticaly and make some fields setups in static applications.
@@ -118,7 +155,7 @@ Those are the results that shows up in the standard output, in this case the con
 
 ### Graphical Results
 
-Those are the graphical results of the calculator. For each coil a graphic is generated with the amplitude of the magnetic field of a slice in the center of the coil, this slice must have the region of interest, it also displays a 3D graphic of what the system looks like. Those graphics can help to estimate the homogenity level of the whole region. 
+Those are the graphical results of the calculator. For each coil a graphic is generated with the amplitude of the magnetic field of a slice in the center of the coil, this slice must have the region of interest, it also displays a 3D graphic of what the system looks like. Those graphics can help to estimate the homogenity level of the whole region.
 
 <p align="center">
   <img src="https://i.imgur.com/wLzB2G6.png">
@@ -152,7 +189,7 @@ As can be seen in the next figures, the calculator estimates the interference of
 
 After checking all the homogenity and interference stuff, the interested parameters to construct the coils support are shown in the next table:
 
-Wire External Diameter = 0.6 mm 
+Wire External Diameter = 0.6 mm
 
 |Coils| Radius | Coil Width| Coil Height|
 |:-:|-|-|-|
@@ -161,7 +198,7 @@ Wire External Diameter = 0.6 mm
 | External | 66.5 mm | 4.65 mm | 5.5 mm |
 **\* rouded values**
 
-## 3D models 
+## 3D models
 
 With the high precision of the 3D printers ($\pm$ 1 $\mu$m) the idea was doing the 3 helmholtz coils all together in the same mechanical part, 1 piece. With this, the misalignment problems would desappear.
 
@@ -213,7 +250,7 @@ To attach the PCB support to the coils support some pegs was designed with difer
 
 Using 50 $\mu$m of difference between the pegs, will make it safe to fit in the previous models holes, testing which diameter is beter to use.
 
-### 3 feet support
+### 3 feet support 3D model
 
 To avoid some induction fields problems that could appear for some kind of measurements, a 3 feet support for the coils support was design that the coils support just fits inside of the 3 feet support and make some distance between the table metal supports and the coils.
 
@@ -252,14 +289,14 @@ The Sensor/Sample support and pegs were printed in the CTR high resolution print
 </p>
 
 <p align="center">
-  <img src="https://i.imgur.com/FMYslBA.png">  
-  <img src="https://i.imgur.com/d5Cf9GZ.png">  
+  <img src="https://i.imgur.com/FMYslBA.png">
+  <img src="https://i.imgur.com/d5Cf9GZ.png">
 </p>
 
 ### Pegs
 
 <p align="center">
-  <img src="https://i.imgur.com/mdp87lR.png">  
+  <img src="https://i.imgur.com/mdp87lR.png">
 </p>
 
 ## 3 Feet support
@@ -267,7 +304,7 @@ The Sensor/Sample support and pegs were printed in the CTR high resolution print
 Following figure shows the 3 feet suppport printed in the lower resolution printer, that is also very good and it's used for bigger 3D models.
 
 <p align="center">
-  <img src="https://i.imgur.com/0nlz94t.png">  
+  <img src="https://i.imgur.com/0nlz94t.png">
 </p>
 
 ## Coils winding
@@ -275,8 +312,8 @@ Following figure shows the 3 feet suppport printed in the lower resolution print
 After doing the windings really carefull, maintaining the [wire] stretched while doing each turn, it helped to get the wire really fit in the coils support. The arrangement to stretch the wire can be seen in the next image, its an improvised tool that makes some pressure in the reel, extremely important to make the coils the most near to the simulation position of the wires.
 
 <p align="center">
-  <img src="https://i.imgur.com/IUi05BB.png">  
-  <img src="https://i.imgur.com/KXlm8cY.png">  
+  <img src="https://i.imgur.com/IUi05BB.png">
+  <img src="https://i.imgur.com/KXlm8cY.png">
 </p>
 
  The [hot glue] was used to mantain the cables fixed in the coils suppor, the result of the 3 axis coil can be seen in the following image:
@@ -286,13 +323,11 @@ After doing the windings really carefull, maintaining the [wire] stretched while
   <img src="https://i.imgur.com/IkDBRM8.png">
 </p>
 
-
-
 Each of the six coils was done individualy, doing the inside coils first, and then connected with a solder point with the respective pair (2 coils in X direction to form the X helmholtz coil for example)
 
 ## Practical results
 
-To validate the python calculator, some measurements was made, like the resistence, inductance and generated field for each coil. Each coil is named now by inner, middle and external coil. The measurements are discussed subsequently. 
+To validate the python calculator, some measurements was made, like the resistence, inductance and generated field for each coil. Each coil is named now by inner, middle and external coil. The measurements are discussed subsequently.
 
 ### Inner coil
 
@@ -309,15 +344,15 @@ Coil teorethical features:
 Mesured resistence ($\Omega$), inductance (mH):
 
 <p align="center">
-  <img src="https://i.imgur.com/x8iIYAy.png"> 
-  <img src="https://i.imgur.com/LVjreJY.png">  
+  <img src="https://i.imgur.com/x8iIYAy.png">
+  <img src="https://i.imgur.com/LVjreJY.png">
 </p>
 
 The mesured field with the 500 mA (powersupply and sensor image):
 
 <p align="center">
-  <img src="https://i.imgur.com/nDOGn0i.png">  
-  <img src="https://i.imgur.com/XJ9kA3F.png">  
+  <img src="https://i.imgur.com/nDOGn0i.png">
+  <img src="https://i.imgur.com/XJ9kA3F.png">
 </p>
 
 ### Middle coil
@@ -335,14 +370,14 @@ Coil teorethical features:
 Mesured resistence, inductance:
 
 <p align="center">
-  <img src="https://i.imgur.com/q5UDi7a.png"> 
-  <img src="https://i.imgur.com/MBkaaHd.png">  
+  <img src="https://i.imgur.com/q5UDi7a.png">
+  <img src="https://i.imgur.com/MBkaaHd.png">
 </p>
 
 The mesured field with the 500 mA (powersupply and sensor image):
 
 <p align="center">
-  <img src="https://i.imgur.com/IYxx4Vd.png">  
+  <img src="https://i.imgur.com/IYxx4Vd.png">
   <img src="https://i.imgur.com/6W8auCz.png">
 </p>
 
@@ -361,25 +396,55 @@ Coil teorethical features:
 Mesured resistence, inductance:
 
 <p align="center">
-  <img src="https://i.imgur.com/Za583Jh.png"> 
-  <img src="https://i.imgur.com/A6V55Mt.png">  
+  <img src="https://i.imgur.com/Za583Jh.png">
+  <img src="https://i.imgur.com/A6V55Mt.png">
 </p>
 
 The mesured field with the 500 mA (powersupply and sensor image):
 
 <p align="center">
-  <img src="https://i.imgur.com/ennhagm.png">  
-  <img src="https://i.imgur.com/627mrrd.png">  
+  <img src="https://i.imgur.com/ennhagm.png">
+  <img src="https://i.imgur.com/627mrrd.png">
 </p>
 
 ### Data analisys
 
+In the previous images can be seen the current to excitate the coils and the magnetic field read from the sensor in **$\mu$T** (The sensor will be explained in the next topic), the magnetic field is already a mean of 30 measurements. The sensor can not be positioned perfectly aligned with the coils directions, then the norm of the difference should be taken to express the real value of the field generated by the coils. 
 
+A python script ([Coil Features]) was made to handle those simple calculations and the results are shown in the next image.
+
+![](https://i.imgur.com/2pE7k2O.png)
+
+As seen, the field error is really tiny (bellow 2%), maybe because the windings somehow are no perfectly round and it can be reflected in this tiny error.
+
+In the resistance the error was quite big, but for an estimative could be helpfull to have some power dissipation notion.
+
+# Magnetic sensor
+
+The magnetic sensor is a really important part of the project, because it will provide the measurements to understand if the coils are working properly or not and the closes some loop to adjust the field if necessary. Some research was done and some sensors was tried. The first solution encounted was the [LIS3MDL] sensor, it's for compass application and had a good range of measurement for the application, but with some tests it showed really bad response to offset errors, so another one was tried, an upgraded version of this sensor from the same company ([ST]), [LSM303D], but somehow there was the same problems. Then researched for another companies that would be specialized in magnetic sensors and then found [MEMSIC], and searching for magnetic sensors, found one that fitted in the application, [MMC3416].
+
+# need to explain some things here
+
+Sensor in I²C
 
 # Controller
 
+The controller part of the blocks diagram could be anything that could:
+
+-   Control the coils field
+-   Read the sensor measurements
+-   Interpret the user commands
+
+For those tasks more especificaly was needed something that could have some: 
+-   I²C comunication 
+-   Current source adjustable with a good resolution, to achieve the field resolution bellow 1 uT
+-   A way to change the current polarity in the coils
+-   Kind of USB communication to stablish comunication with the computer (where the user interface would be implemented)
+
+
+
 <p align="center">
-  <img src="https://i.imgur.com/lGi1RIw.png">   
+  <img src="https://i.imgur.com/lGi1RIw.png">
 </p>
 
 
@@ -389,40 +454,39 @@ The mesured field with the 500 mA (powersupply and sensor image):
 
 ## MCU
 
-# Magnetic sensor
 
 
 # PCBs
 
 <p align="center">
-  <img src="https://i.imgur.com/K3De7Ns.png">  
-  <img src="https://i.imgur.com/h4xlgdN.png">  
+  <img src="https://i.imgur.com/K3De7Ns.png">
+  <img src="https://i.imgur.com/h4xlgdN.png">
 </p>
 
 <p align="center">
-  <img src="https://i.imgur.com/iOp6hKP.png">  
-  <img src="https://i.imgur.com/zlb893Q.png">  
-</p>
-
-
-<p align="center">
-  <img src="https://i.imgur.com/B85BN9M.png">  
-  <img src="https://i.imgur.com/tkJYENF.png">  
+  <img src="https://i.imgur.com/iOp6hKP.png">
+  <img src="https://i.imgur.com/zlb893Q.png">
 </p>
 
 
 <p align="center">
-  <img src="https://i.imgur.com/33onxWX.png">  
-  <img src="https://i.imgur.com/1eaJG9P.png">  
-</p>
-
-<p align="center">
-  <img src="https://i.imgur.com/R0zvZy2.png">  
+  <img src="https://i.imgur.com/B85BN9M.png">
+  <img src="https://i.imgur.com/tkJYENF.png">
 </p>
 
 
 <p align="center">
-  <img src="https://i.imgur.com/qHP6Xhr.png">   
+  <img src="https://i.imgur.com/33onxWX.png">
+  <img src="https://i.imgur.com/1eaJG9P.png">
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/R0zvZy2.png">
+</p>
+
+
+<p align="center">
+  <img src="https://i.imgur.com/qHP6Xhr.png">
 </p>
 
 
@@ -436,13 +500,13 @@ The mesured field with the 500 mA (powersupply and sensor image):
 
 
 <p align="center">
-  <img src="https://i.imgur.com/o32hRec.png"> 
-  <img src="https://i.imgur.com/eogJmTj.png">    
+  <img src="https://i.imgur.com/o32hRec.png">
+  <img src="https://i.imgur.com/eogJmTj.png">
 </p>
 
 
 <p align="center">
-  <img src="https://i.imgur.com/8XdFvad.png">    
+  <img src="https://i.imgur.com/8XdFvad.png">
 </p>
 
 
@@ -483,6 +547,8 @@ The mesured field with the 500 mA (powersupply and sensor image):
 
 [Auxiliar library]:magpylibUtils.md
 
+[Coil Features]:CoilFeatures.md
+
 [magpylib]:https://github.com/magpylib/magpylib
 
 [Helmholtz coil]:https://en.wikipedia.org/wiki/Helmholtz_coil
@@ -506,6 +572,19 @@ The mesured field with the 500 mA (powersupply and sensor image):
 [Missing Image]:https://i.imgur.com/0EmAI26.png
 
 [wire]:https://at.rs-online.com/web/p/kupferdrahte/0357750/
+
+[LSM303D]:https://www.pololu.com/file/0J703/LSM303D.pdf
+
+[LIS3MDL]:https://www.st.com/resource/en/datasheet/lis3mdl.pdf
+
+
+[MMC3416]:http://www.memsic.com/userfiles/files/Datasheets/Magnetic-Sensors-Datasheets/MMC3416xPJ_Rev_C_2013_10_30.pdf
+
+[MEMSIC]:https://www.memsic.com/
+
+[ST]:https://www.st.com/content/st_com/en.html
+
+
 
 ![Missing Image](https://i.imgur.com/0EmAI26.png)
 
