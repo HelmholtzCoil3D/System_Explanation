@@ -426,6 +426,7 @@ The magnetic sensor is a really important part of the project, because it will p
 # need to explain some things here
 
 Sensor in I²C
+Evaluation board
 
 # Controller
 
@@ -436,25 +437,78 @@ The controller part of the blocks diagram could be anything that could:
 -   Interpret the user commands
 
 For those tasks more especificaly was needed something that could have some: 
--   I²C comunication 
+-   I²C comunication (sensor) 
 -   Current source adjustable with a good resolution, to achieve the field resolution bellow 1 uT
 -   A way to change the current polarity in the coils
 -   Kind of USB communication to stablish comunication with the computer (where the user interface would be implemented)
 
+It's difficult to have all those tasks already integrated so some research was done to what to use.
 
+## Power Supply
+
+In one way or another, a power supply must be used to provide the energy for the coils, can be as a voltage source or a current source. Operating in the voltage source mode would imply some external controller to adjust the right current for the coils, in other way with the current source mode, the power supply must have some kind of electronic current control integrated to use this in the system. After some research found [Rigol DP800] series, specifically the 831A model, that have 0.1 mA resolution of current control with 3 channels and can be controlled by software, perfect for this application.
+
+<p align="center">
+  <img src="https://i.imgur.com/gZmzW8N.png">
+</p>
+
+
+## H-bridges
+
+To control the current polarity in the coils, a classical but really good solution can be used, the [H-bridge] control.
+
+ ![](https://i.imgur.com/AZOmCl6.png) ![](https://i.imgur.com/uztRrHg.png) ![](https://i.imgur.com/wAxmOd2.png) 
+
+It's system composed by 2 switches, as shown in the first figure of this section. The circuit have 3 possible states, that are shown in the figures, one state is everything open (turn off), and the other two is the current flowing to one direction of the load and the other the current is flowing in the another direction.
+
+A lot of research was done, and most of the integrated H bridges have underload protection what is not desirable for this project, but one was found with the potential to be used, the [DRV8838DSGR] IC.
+
+![](https://i.imgur.com/o9l9z6b.png)
+
+This IC works with 2 digital pins to control the states and is based on N-Mosfets. It can operate in 0~11 V range which fit the application. The only downside is the fact that the load supply is not isolated from the control supply.
+
+The power supply choosed for the current control has one of its channels a negative voltage source that is internaly connected to another positive channel. In this case the [DRV8838DSGR] H-bridge the internal connection in the references of the supply for the logic (Vcc) and the supply for the load (VM) would cause a short circuit between the negative voltage and the reference in the power supply.
+
+For this specific channel, a different solution to also isolate the channel must be implemented. After some research the best solution would be use 4 relays to do the switch role controlling it in such a way to stay in the 3 possible states of the H-bridge. The component choosed for the switch was [CPC1002N], it's a solid-state relay, basicaly an optocoupler with more current capacity than a normal optocoupler.
+
+![](https://i.imgur.com/tdPA7C5.png)
+
+
+## MCU
+
+To control the H-bridges and the sensor a microcontroller can be used. The microcontroller must have:
+-   I²C interface peripherical
+-   At least 6 free digital pins (H bridges)
+-   USB comunication peripherical
+
+And for this the [STM32L4] was choosed because of the versatility, powerful processing, easy usage and low cost, And it has all the features necessary for the system.
+
+[STM32L4]:https://www.st.com/resource/en/datasheet/stm32l432kc.pdf
+
+To program this controller the [stm32CUBE] was used to generate the base code and the [atollic] to edit, compile, debug and program the code.
+
+The main code developed for the microcontroller is in those files:
+
+-   [main.c]
+-   [main.h]
+-   [lib_aux.c]
+-   [lib_aux.h]
+-   [MCC3416_def.h]
+
+To have more robustness the system was developed in a [finite state machine] shape, with one state for each operation.
+
+When the microcontroller starts-up the first thing that it does is asking throught USB comunication, the size of the mean for each measurement and the time to do it, of course the bigger the measurements number, bigger the overhead will be.
+
+
+[finite state machine]:https://en.wikipedia.org/wiki/Finite-state_machine
+
+[atollic]:https://atollic.com/
+
+[stm32CUBE]:https://www.st.com/en/ecosystems/stm32cube.html#overview
 
 <p align="center">
   <img src="https://i.imgur.com/lGi1RIw.png">
 </p>
-
-
-## Power Supply
-
-## H-bridges
-
-## MCU
-
-
 
 # PCBs
 
@@ -538,6 +592,28 @@ For those tasks more especificaly was needed something that could have some:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/aR3ZOZWw4vM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 </details>
+
+
+
+
+[main.c]:main.c.md
+
+[main.h]:main.h.md
+
+[lib_aux.h]:lib_aux.h.md
+
+[lib_aux.c]:lib_aux.c.md
+
+[MCC3416_def.h]:MCC3416_def.h.md
+
+[CPC1002N]:http://www.ixysic.com/home/pdfs.nsf/www/CPC1002N.pdf/$file/CPC1002N.pdf
+
+[DRV8838DSGR]:http://www.ti.com/lit/ds/symlink/drv8838.pdf
+
+
+[H-bridge]:https://en.wikipedia.org/wiki/H_bridge
+
+[Rigol DP800]:http://beyondmeasure.rigoltech.com/acton/attachment/1579/f-01c1/1/-/-/-/-/DP800%20Datasheet.pdf
 
 [Compass zero field demonstration]:https://www.youtube.com/watch?v=eRR1c4607lU
 
