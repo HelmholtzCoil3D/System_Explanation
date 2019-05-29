@@ -564,18 +564,18 @@ The existing scripts until now following:
 
 
 
-[auxLib.py]:System_integration/auxLib.html
-[system_current_finder.py]:System_integration/system_current_finder.html
-[system_plot.py]:System_integration/system_plot.html
-[system_plot.py]:System_integration/system_plot.html
-[system_plot.py]:System_integration/system_plot.html
-[re]:https://docs.python.org/3/library/re.html?highlight=re#module-re
-[csv]:https://docs.python.org/3/library/csv.html?highlight=csv#module-csv
-[time]:https://docs.python.org/3/library/time.html
+[auxLib.py]:System_integration/auxLib.md
+[system_current_finder.py]:System_integration/system_current_finder.md
+[system_plot.py]:System_integration/system_plot.md
+[system_plot.py]:System_integration/system_plot.md
+[system_plot.py]:System_integration/system_plot.md
+[re]:https://docs.python.org/3/library/re.md?highlight=re#module-re
+[csv]:https://docs.python.org/3/library/csv.md?highlight=csv#module-csv
+[time]:https://docs.python.org/3/library/time.md
 [matplotlib]:https://matplotlib.org/
 [numpy]:https://www.numpy.org/
 [pyvisa]:https://pyvisa.readthedocs.io/en/latest/
-[pyserial]:https://pyserial.readthedocs.io/en/latest/pyserial.html
+[pyserial]:https://pyserial.readthedocs.io/en/latest/pyserial.md
 
 ## System validation
 
@@ -674,13 +674,13 @@ n tem interface :'(
 
 
 
-[main.h]:Microcontroller/main.h.html
+[main.h]:Microcontroller/main.h.md
 
-[lib_aux.h]:Microcontroller/lib_aux.h.html
+[lib_aux.h]:Microcontroller/lib_aux.h.md
 
-[lib_aux.c]:Microcontroller/lib_aux.c.html
+[lib_aux.c]:Microcontroller/lib_aux.c.md
 
-[MCC3416_def.h]:Microcontroller/MCC3416_def.h.html
+[MCC3416_def.h]:Microcontroller/MCC3416_def.h.md
 
 [CPC1002N]:http://www.ixysic.com/home/pdfs.nsf/www/CPC1002N.pdf/$file/CPC1002N.pdf
 
@@ -695,11 +695,11 @@ n tem interface :'(
 
 [Compass zero field procedure]:https://www.youtube.com/watch?v=aR3ZOZWw4vM&t=
 
-[Helmholtz coil calculator]:helmholtzCoilsSimulations/HelmholtzCoilCalculator.html
+[Helmholtz coil calculator]:helmholtzCoilsSimulations/HelmholtzCoilCalculator.md
 
-[Auxiliar library]:helmholtzCoilsSimulations/magpylibUtils.html
+[Auxiliar library]:helmholtzCoilsSimulations/magpylibUtils.md
 
-[Coil Features]:CoilFeatures.html
+[Coil Features]:CoilFeatures.md
 
 [magpylib]:https://github.com/magpylib/magpylib
 
@@ -734,7 +734,7 @@ n tem interface :'(
 
 [MEMSIC]:https://www.memsic.com/
 
-[ST]:https://www.st.com/content/st_com/en.html
+[ST]:https://www.st.com/content/st_com/en.md
 
 
 
