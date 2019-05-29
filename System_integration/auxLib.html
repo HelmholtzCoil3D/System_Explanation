@@ -1,0 +1,1020 @@
+<!DOCTYPE html><html><head>
+      <title>auxLib</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///C:\Users\Aurelio\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.4.0\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+      <style> 
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+ 
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <pre data-role="codeBlock" data-info="python" class="language-python"><span class="token comment"># -*- coding: utf-8 -*-</span>
+<span class="token triple-quoted-string string">&quot;&quot;&quot;
+Auxiliar library for the Serial and User interface for the Helmholtz 3Dcoil project
+
+Tarcis Becher
+CTR
+&quot;&quot;&quot;</span>
+
+<span class="token comment">#%% Imports ---------------------------------------------------------------------------------------------------------</span>
+
+<span class="token keyword">import</span> os
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">import</span> re
+<span class="token keyword">import</span> datetime
+<span class="token keyword">import</span> visa
+<span class="token keyword">import</span> serial
+<span class="token keyword">import</span> serial<span class="token punctuation">.</span>tools<span class="token punctuation">.</span>list_ports
+<span class="token keyword">from</span> time <span class="token keyword">import</span> sleep
+
+<span class="token comment"># -------------------------------------------------------------------------------------------------------------------</span>
+<span class="token comment">#%% Definitions -----------------------------------------------------------------------------------------------------</span>
+
+MCUcomText <span class="token operator">=</span> <span class="token string">&apos;STMicroelectronics STLink Virtual COM Port&apos;</span>
+csvFileDir <span class="token operator">=</span> <span class="token string">&quot;./csvData/&quot;</span>
+regexSampleFinder <span class="token operator">=</span> <span class="token string">&quot;(-?\w*.\w*);&quot;</span>
+
+<span class="token comment"># -------------------------------------------------------------------------------------------------------------------</span>
+<span class="token comment">#%% Auxiliar function -----------------------------------------------------------------------------------------------</span>
+<span class="token keyword">class</span> <span class="token class-name">CurrentCalculatorObj</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+      
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> channel<span class="token punctuation">,</span> zeroField<span class="token punctuation">,</span> uT_to_mA<span class="token punctuation">,</span> mA_to_uT<span class="token punctuation">,</span> infCurrentLim <span class="token operator">=</span> <span class="token number">0.1</span><span class="token punctuation">,</span> supCurrentLim <span class="token operator">=</span> <span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        
+        self<span class="token punctuation">.</span>channel <span class="token operator">=</span> channel
+        self<span class="token punctuation">.</span>infCurrentLim <span class="token operator">=</span> infCurrentLim <span class="token comment"># mA</span>
+        self<span class="token punctuation">.</span>supCurrentLim <span class="token operator">=</span> supCurrentLim <span class="token comment"># mA</span>
+        self<span class="token punctuation">.</span>zeroField <span class="token operator">=</span> zeroField
+        self<span class="token punctuation">.</span>uT_to_mA <span class="token operator">=</span> uT_to_mA
+        self<span class="token punctuation">.</span>mA_to_uT <span class="token operator">=</span> mA_to_uT
+        
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>zeroField <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>zeroFieldSense <span class="token operator">=</span> <span class="token number">1</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>zeroFieldSense <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span>
+            
+        self<span class="token punctuation">.</span>incrementSense <span class="token operator">=</span> <span class="token number">1</span>
+
+    
+    <span class="token keyword">def</span> <span class="token function">calculateCurrent</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> Field<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> Field <span class="token operator">&gt;=</span> self<span class="token punctuation">.</span>zeroField<span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>incrementSense <span class="token operator">=</span> <span class="token number">1</span>
+        <span class="token keyword">else</span> <span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>incrementSense <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span>
+        
+        current <span class="token operator">=</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>zeroField<span class="token operator">*</span>self<span class="token punctuation">.</span>zeroFieldSense <span class="token operator">+</span> Field<span class="token operator">*</span>self<span class="token punctuation">.</span>incrementSense<span class="token punctuation">)</span><span class="token operator">*</span>self<span class="token punctuation">.</span>uT_to_mA
+        
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>zeroField <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            current <span class="token operator">=</span> <span class="token operator">-</span>current
+            
+        <span class="token comment">#print(current)</span>
+        
+        <span class="token keyword">return</span> current
+       
+    
+    <span class="token comment"># sets&apos;n gets</span>
+    <span class="token keyword">def</span> <span class="token function">set_uT_to_mA</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> new_uT_to_mA<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>uT_to_mA <span class="token operator">=</span> new_uT_to_mA
+        
+    <span class="token keyword">def</span> <span class="token function">get_uT_to_mA</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>uT_to_mA
+    
+    <span class="token keyword">def</span> <span class="token function">set_mA_to_uT</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> new_mA_to_uT<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>mA_to_uT <span class="token operator">=</span> new_mA_to_uT
+        
+    <span class="token keyword">def</span> <span class="token function">get_mA_to_uT</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>mA_to_uT
+    
+    <span class="token keyword">def</span> <span class="token function">setSupCurrentLim</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> newsupCurrentLim<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>supCurrentLim <span class="token operator">=</span> newsupCurrentLim
+        
+    <span class="token keyword">def</span> <span class="token function">getSupCurrentLim</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>supCurrentLim
+    
+    <span class="token keyword">def</span> <span class="token function">setInfCurrentLim</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> newinfCurrentLim<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>infCurrentLim <span class="token operator">=</span> newinfCurrentLim
+        
+    <span class="token keyword">def</span> <span class="token function">getInfCurrentLim</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>infCurrentLim
+    
+    <span class="token keyword">def</span> <span class="token function">setZeroFieldSense</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> newzeroFieldSense<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>zeroFieldSense <span class="token operator">=</span> newzeroFieldSense
+        
+    <span class="token keyword">def</span> <span class="token function">getZeroFieldSense</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>zeroFieldSense
+    
+    <span class="token keyword">def</span> <span class="token function">setSentidoDeIncremento</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> newSentidoDeIncremento<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>incrementSense <span class="token operator">=</span> newSentidoDeIncremento
+        
+    <span class="token keyword">def</span> <span class="token function">getSentidoDeIncremento</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>incrementSense
+
+    <span class="token keyword">def</span> <span class="token function">setZeroField</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> newZeroField<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>zeroField <span class="token operator">=</span> newZeroField
+        
+    <span class="token keyword">def</span> <span class="token function">getZeroField</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>zeroField
+    
+    <span class="token keyword">def</span> <span class="token function">setChannel</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> newChannel<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>channel <span class="token operator">=</span> newChannel
+        
+    <span class="token keyword">def</span> <span class="token function">getChannel</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>channel
+    
+    
+<span class="token keyword">class</span> <span class="token class-name">storeDataObj</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> rotationMatrix<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>current <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>field <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        self<span class="token punctuation">.</span>channel <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>rotationMatrix <span class="token operator">=</span> rotationMatrix
+        self<span class="token punctuation">.</span>zeroField <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>control <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>index <span class="token operator">=</span> <span class="token number">0</span>
+        
+    <span class="token keyword">def</span> <span class="token function">storeData</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> field<span class="token punctuation">,</span> current<span class="token punctuation">,</span> channel<span class="token punctuation">,</span> zeroField<span class="token punctuation">,</span> control<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>field<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>append<span class="token punctuation">(</span>field<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>field<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>append<span class="token punctuation">(</span>field<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>field<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span>append<span class="token punctuation">(</span>field<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>current<span class="token punctuation">.</span>append<span class="token punctuation">(</span>current<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>channel<span class="token punctuation">.</span>append<span class="token punctuation">(</span>channel<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>zeroField<span class="token punctuation">.</span>append<span class="token punctuation">(</span>zeroField<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>control<span class="token punctuation">.</span>append<span class="token punctuation">(</span>control<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>index <span class="token operator">+=</span> <span class="token number">1</span>
+    
+    <span class="token keyword">def</span> <span class="token function">createCSVfile</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> fileDir<span class="token punctuation">,</span> fileName<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment">#date = WhatTimeIsIt()</span>
+        <span class="token comment">#fileName = date[0:10] + &quot;-&quot; + date[11:13] + &quot;-&quot; + date[14:16] + &quot;-&quot; + date[17:19]</span>
+        <span class="token comment">#fileName = &apos;tests&apos;</span>
+        makeDir<span class="token punctuation">(</span>fileDir<span class="token punctuation">)</span>
+        fileCsv <span class="token operator">=</span> createAndOpenFile<span class="token punctuation">(</span>fileDir<span class="token punctuation">,</span> fileName<span class="token punctuation">,</span> <span class="token string">&quot;.csv&quot;</span><span class="token punctuation">)</span>
+        fileCsv<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">&quot;RotationMatrix;&quot;</span> <span class="token operator">+</span> 
+                      <span class="token builtin">str</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>rotationMatrix<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;;&quot;</span> <span class="token operator">+</span> 
+                      <span class="token builtin">str</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>rotationMatrix<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;;&quot;</span> <span class="token operator">+</span> 
+                      <span class="token builtin">str</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>rotationMatrix<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;;&quot;</span> <span class="token operator">+</span> 
+                      <span class="token builtin">str</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>rotationMatrix<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;;&quot;</span> <span class="token operator">+</span> 
+                      <span class="token builtin">str</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>rotationMatrix<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;;&quot;</span> <span class="token operator">+</span> 
+                      <span class="token builtin">str</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>rotationMatrix<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;;&quot;</span> <span class="token operator">+</span> 
+                      <span class="token builtin">str</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>rotationMatrix<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;;&quot;</span> <span class="token operator">+</span> 
+                      <span class="token builtin">str</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>rotationMatrix<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;;&quot;</span> <span class="token operator">+</span> 
+                      <span class="token builtin">str</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>rotationMatrix<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;;&quot;</span> <span class="token operator">+</span> <span class="token string">&quot;\n&quot;</span><span class="token punctuation">)</span>
+        fileCsv<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">&quot;Axis X; Axis Y; Axis Z; Current; Channel; Date \n&quot;</span><span class="token punctuation">)</span>
+        i <span class="token operator">=</span> <span class="token number">0</span>
+        <span class="token comment">#print(&apos;what&apos;)</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span>  <span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>current<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>index <span class="token operator">-=</span> <span class="token number">1</span>
+            data <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">(</span><span class="token builtin">float</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>field<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token builtin">float</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>field<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token builtin">float</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>field<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                    <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token builtin">float</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>current<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token builtin">float</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>channel<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token builtin">float</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>zeroField<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>control<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span>
+            <span class="token comment">#print(i)</span>
+            i <span class="token operator">+=</span> <span class="token number">1</span>
+            <span class="token keyword">try</span><span class="token punctuation">:</span>
+                j <span class="token operator">=</span> <span class="token number">0</span>
+                <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                    fileCsv<span class="token punctuation">.</span>write<span class="token punctuation">(</span>data<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>
+                    fileCsv<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">&quot;;&quot;</span><span class="token punctuation">)</span>
+                    j<span class="token operator">+=</span><span class="token number">1</span>     
+                fileCsv<span class="token punctuation">.</span>write<span class="token punctuation">(</span>WhatTimeIsIt<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                fileCsv<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">&quot;\n&quot;</span><span class="token punctuation">)</span>
+            <span class="token keyword">except</span> Exception <span class="token keyword">as</span> error<span class="token punctuation">:</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+            
+        closeFile<span class="token punctuation">(</span>fileCsv<span class="token punctuation">)</span>
+   
+<span class="token keyword">def</span> <span class="token function">closedLoopAdjust</span><span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> serialObj<span class="token punctuation">,</span> channel<span class="token punctuation">,</span> samplingTime<span class="token punctuation">,</span> desiredField<span class="token punctuation">,</span> rotationMatrix<span class="token punctuation">,</span> initialValue<span class="token punctuation">,</span> supLim<span class="token punctuation">,</span> control <span class="token operator">=</span> <span class="token string">&apos;Current&apos;</span><span class="token punctuation">,</span> breakCondition <span class="token operator">=</span> <span class="token number">0.5</span><span class="token punctuation">,</span> maxIterations <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    
+    iAnt <span class="token operator">=</span> initialValue
+    eAnt <span class="token operator">=</span> <span class="token number">0</span>
+    index <span class="token operator">=</span> <span class="token number">0</span>
+    
+    
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        
+        i <span class="token operator">=</span> eAnt<span class="token operator">*</span>samplingTime <span class="token operator">+</span> iAnt        
+        
+        <span class="token keyword">if</span> i <span class="token operator">&gt;</span> supLim<span class="token punctuation">:</span>
+            i <span class="token operator">=</span> supLim
+        <span class="token keyword">if</span> i <span class="token operator">&lt;</span> <span class="token operator">-</span>supLim<span class="token punctuation">:</span>
+            i <span class="token operator">=</span> <span class="token operator">-</span>supLim
+            
+        <span class="token keyword">if</span> i <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> channel <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+                changeCoilPolarity<span class="token punctuation">(</span>serialObj<span class="token punctuation">,</span> <span class="token string">&apos;resetExternal&apos;</span><span class="token punctuation">)</span>
+            <span class="token keyword">elif</span> channel <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
+                changeCoilPolarity<span class="token punctuation">(</span>serialObj<span class="token punctuation">,</span> <span class="token string">&apos;resetInner&apos;</span><span class="token punctuation">)</span>
+            <span class="token keyword">elif</span> channel <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">:</span>
+                changeCoilPolarity<span class="token punctuation">(</span>serialObj<span class="token punctuation">,</span> <span class="token string">&apos;resetMiddle&apos;</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> channel <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+                changeCoilPolarity<span class="token punctuation">(</span>serialObj<span class="token punctuation">,</span> <span class="token string">&apos;setExternal&apos;</span><span class="token punctuation">)</span>
+            <span class="token keyword">elif</span> channel <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
+                changeCoilPolarity<span class="token punctuation">(</span>serialObj<span class="token punctuation">,</span> <span class="token string">&apos;setInner&apos;</span><span class="token punctuation">)</span>
+            <span class="token keyword">elif</span> channel <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">:</span>
+                changeCoilPolarity<span class="token punctuation">(</span>serialObj<span class="token punctuation">,</span> <span class="token string">&apos;setMiddle&apos;</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> control <span class="token operator">==</span> <span class="token string">&apos;Current&apos;</span><span class="token punctuation">:</span>
+            setPowerSupplyChCurrent<span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> channel<span class="token punctuation">,</span> <span class="token builtin">float</span><span class="token punctuation">(</span>i<span class="token operator">/</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            setPowerSupplyChVoltage<span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> channel<span class="token punctuation">,</span> <span class="token builtin">float</span><span class="token punctuation">(</span>i<span class="token operator">/</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
+        
+        <span class="token comment">#print(&apos;vish&apos;)</span>
+        fData <span class="token operator">=</span> getMeasurement<span class="token punctuation">(</span>serialObj<span class="token punctuation">)</span>
+        newField <span class="token operator">=</span> np<span class="token punctuation">.</span>matmul<span class="token punctuation">(</span>rotationMatrix<span class="token punctuation">,</span> fData<span class="token punctuation">)</span>
+        <span class="token comment">#print(newField)</span>
+        e <span class="token operator">=</span> desiredField <span class="token operator">-</span> newField<span class="token punctuation">[</span>channel<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+        <span class="token comment">#print(e)</span>
+        eAnt <span class="token operator">=</span> e
+        iAnt <span class="token operator">=</span> i
+        
+        index <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>np<span class="token punctuation">.</span>linalg<span class="token punctuation">.</span>norm<span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token operator">&lt;</span> breakCondition<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">break</span>
+        <span class="token keyword">if</span> index <span class="token operator">&gt;</span> maxIterations<span class="token punctuation">:</span>
+            <span class="token keyword">break</span>    
+        
+    <span class="token keyword">return</span> newField<span class="token punctuation">,</span> i<span class="token punctuation">,</span> e
+
+
+
+<span class="token keyword">def</span> <span class="token function">setField</span><span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> serialObj<span class="token punctuation">,</span> CurrentCalculatorObjObj<span class="token punctuation">,</span> samplingTime<span class="token punctuation">,</span> desiredField<span class="token punctuation">,</span> rotationMatrix<span class="token punctuation">,</span> breakCondition <span class="token operator">=</span> <span class="token number">0.3</span><span class="token punctuation">,</span> maxIterations <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        
+    current <span class="token operator">=</span> CurrentCalculatorObjObj<span class="token punctuation">.</span>calculateCurrent<span class="token punctuation">(</span>desiredField<span class="token punctuation">)</span>
+    
+    <span class="token comment">#infLim = CurrentCalculatorObjObj.getInfCurrentLim()</span>
+    supLim <span class="token operator">=</span> CurrentCalculatorObjObj<span class="token punctuation">.</span>getSupCurrentLim<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">#errorMessage = print(&quot;Current transpassed the limit, it&apos;s ajusted to de limit&quot;)</span>
+        
+    channel <span class="token operator">=</span> CurrentCalculatorObjObj<span class="token punctuation">.</span>getChannel<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+    voltFlag <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">if</span> current <span class="token operator">&lt;</span> <span class="token number">0.1</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> current <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            voltFlag <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token keyword">if</span> current <span class="token operator">&gt;</span> <span class="token operator">-</span><span class="token number">0.1</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> current <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            voltFlag <span class="token operator">=</span> <span class="token number">1</span>
+    
+    <span class="token keyword">if</span> voltFlag <span class="token punctuation">:</span>
+        
+        control <span class="token operator">=</span> <span class="token string">&apos;Voltage&apos;</span>
+        setPowerSupplyChCurrent<span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> channel<span class="token punctuation">,</span> <span class="token builtin">float</span><span class="token punctuation">(</span>supLim<span class="token operator">/</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
+        setPowerSupplyChVoltage<span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> channel<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        control <span class="token operator">=</span> <span class="token string">&apos;Current&apos;</span>    
+        setPowerSupplyChCurrent<span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> channel<span class="token punctuation">,</span> <span class="token builtin">float</span><span class="token punctuation">(</span>current<span class="token operator">/</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
+        setPowerSupplyChVoltage<span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> channel<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">if</span> current <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> channel <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+            changeCoilPolarity<span class="token punctuation">(</span>serialObj<span class="token punctuation">,</span> <span class="token string">&apos;resetExternal&apos;</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> channel <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
+            changeCoilPolarity<span class="token punctuation">(</span>serialObj<span class="token punctuation">,</span> <span class="token string">&apos;resetInner&apos;</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> channel <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">:</span>
+            changeCoilPolarity<span class="token punctuation">(</span>serialObj<span class="token punctuation">,</span> <span class="token string">&apos;resetMiddle&apos;</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> channel <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+            changeCoilPolarity<span class="token punctuation">(</span>serialObj<span class="token punctuation">,</span> <span class="token string">&apos;setExternal&apos;</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> channel <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
+            changeCoilPolarity<span class="token punctuation">(</span>serialObj<span class="token punctuation">,</span> <span class="token string">&apos;setInner&apos;</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> channel <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">:</span>
+            changeCoilPolarity<span class="token punctuation">(</span>serialObj<span class="token punctuation">,</span> <span class="token string">&apos;setMiddle&apos;</span><span class="token punctuation">)</span>
+        <span class="token comment">#current = -current</span>
+           
+    <span class="token keyword">if</span> control <span class="token operator">==</span> <span class="token string">&apos;Current&apos;</span><span class="token punctuation">:</span>
+        <span class="token comment"># closed loop control code     </span>
+        initialValue <span class="token operator">=</span> current
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        initialValue <span class="token operator">=</span> <span class="token number">0</span>
+    
+    newField<span class="token punctuation">,</span> i<span class="token punctuation">,</span> er <span class="token operator">=</span> closedLoopAdjust<span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> serialObj<span class="token punctuation">,</span> channel<span class="token punctuation">,</span> samplingTime<span class="token punctuation">,</span> desiredField<span class="token punctuation">,</span> rotationMatrix<span class="token punctuation">,</span> initialValue<span class="token punctuation">,</span> supLim<span class="token punctuation">,</span> control <span class="token operator">=</span> control<span class="token punctuation">,</span> breakCondition <span class="token operator">=</span> breakCondition<span class="token punctuation">,</span> maxIterations <span class="token operator">=</span> maxIterations<span class="token punctuation">)</span>
+    
+    <span class="token comment">#print(er)</span>
+        
+    <span class="token keyword">return</span> newField<span class="token punctuation">,</span> i<span class="token punctuation">,</span> control 
+
+
+<span class="token keyword">def</span> <span class="token function">updateCoilPolarity</span><span class="token punctuation">(</span>serialObj<span class="token punctuation">,</span> current<span class="token punctuation">,</span> channel<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    
+    <span class="token keyword">if</span> current <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> channel <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+            changeCoilPolarity<span class="token punctuation">(</span>serialObj<span class="token punctuation">,</span> <span class="token string">&apos;resetExternal&apos;</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> channel <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
+            changeCoilPolarity<span class="token punctuation">(</span>serialObj<span class="token punctuation">,</span> <span class="token string">&apos;resetInner&apos;</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> channel <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">:</span>
+            changeCoilPolarity<span class="token punctuation">(</span>serialObj<span class="token punctuation">,</span> <span class="token string">&apos;resetMiddle&apos;</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        
+        <span class="token keyword">if</span> channel <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+            changeCoilPolarity<span class="token punctuation">(</span>serialObj<span class="token punctuation">,</span> <span class="token string">&apos;setExternal&apos;</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> channel <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
+            changeCoilPolarity<span class="token punctuation">(</span>serialObj<span class="token punctuation">,</span> <span class="token string">&apos;setInner&apos;</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> channel <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">:</span>
+            changeCoilPolarity<span class="token punctuation">(</span>serialObj<span class="token punctuation">,</span> <span class="token string">&apos;setMiddle&apos;</span><span class="token punctuation">)</span>
+            
+
+<span class="token keyword">def</span> <span class="token function">getDataFromReader</span><span class="token punctuation">(</span>reader<span class="token punctuation">,</span> dataOffset<span class="token punctuation">,</span> rotationMatrixFlag <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    index <span class="token operator">=</span> <span class="token number">0</span>
+    zeroField <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    channel <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    floatData <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    rotationMatrixMeasures <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    control <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    j <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> row <span class="token keyword">in</span> reader<span class="token punctuation">:</span>
+        flag0 <span class="token operator">=</span> <span class="token number">1</span>
+        flag1 <span class="token operator">=</span> <span class="token number">1</span>
+        flag2 <span class="token operator">=</span> <span class="token number">1</span>
+        
+        <span class="token keyword">if</span> rotationMatrixFlag<span class="token punctuation">:</span>
+            <span class="token keyword">if</span> index <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+                fData <span class="token operator">=</span> strToFloat<span class="token punctuation">(</span>row<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                rotationMatrixMeasures<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> fData<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+                rotationMatrixMeasures<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> fData<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+                rotationMatrixMeasures<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> fData<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
+                rotationMatrixMeasures<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> fData<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span>
+                rotationMatrixMeasures<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> fData<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span>
+                rotationMatrixMeasures<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> fData<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span>
+                rotationMatrixMeasures<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> fData<span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span>
+                rotationMatrixMeasures<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> fData<span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">]</span>
+                rotationMatrixMeasures<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> fData<span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">]</span>
+        <span class="token keyword">if</span> index <span class="token operator">&gt;</span> dataOffset<span class="token punctuation">:</span>
+            fData <span class="token operator">=</span> strToFloat<span class="token punctuation">(</span>row<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            floatData<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>append<span class="token punctuation">(</span>fData<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            floatData<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>append<span class="token punctuation">(</span>fData<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            floatData<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span>append<span class="token punctuation">(</span>fData<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            floatData<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">.</span>append<span class="token punctuation">(</span>fData<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            channel<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>fData<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            control<span class="token punctuation">.</span>append<span class="token punctuation">(</span>row<span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">:</span><span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> j <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">:</span>
+                <span class="token keyword">if</span> fData<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">:</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>flag0<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                        zeroField<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> strToFloat<span class="token punctuation">(</span>row<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">:</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                        j <span class="token operator">+=</span> <span class="token number">1</span>
+                        flag0 <span class="token operator">=</span> <span class="token number">0</span>
+                <span class="token keyword">if</span> fData<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>flag1<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                        zeroField<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> strToFloat<span class="token punctuation">(</span>row<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">:</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                        j <span class="token operator">+=</span> <span class="token number">1</span>
+                        flag1 <span class="token operator">=</span> <span class="token number">0</span>
+                <span class="token keyword">if</span> fData<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>flag2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                        zeroField<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> strToFloat<span class="token punctuation">(</span>row<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">:</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                        j <span class="token operator">+=</span> <span class="token number">1</span>
+                        flag2 <span class="token operator">=</span> <span class="token number">0</span>
+        index <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token keyword">return</span> floatData<span class="token punctuation">,</span> channel<span class="token punctuation">,</span> zeroField<span class="token punctuation">,</span> rotationMatrixMeasures<span class="token punctuation">,</span> control
+
+
+<span class="token keyword">def</span> <span class="token function">rotationMatrixCalculator</span><span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> serialObj<span class="token punctuation">,</span> teorethicalValue<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    
+    <span class="token comment"># Rotation matrix, to align the measurements with the Coils axis</span>
+    fData <span class="token operator">=</span> getMeasurement<span class="token punctuation">(</span>serialObj<span class="token punctuation">)</span>    
+    <span class="token comment"># print(fData)</span>
+    
+    <span class="token comment"># buffer to do the rotation matrix measurements</span>
+    bufferData <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    
+    <span class="token comment"># Assuming that the measurement is precise enough</span>
+    bufferData<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> fData<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    bufferData<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> fData<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+    bufferData<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> fData<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
+    
+    <span class="token comment"># Setting the voltage for the power supply</span>
+    setPowerSupplyAllChVoltage<span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+    
+    <span class="token comment"># Current used in the coils to make the relationship between current and field measured</span>
+    baseCurrent <span class="token operator">=</span> <span class="token number">400</span> <span class="token comment">#mA</span>
+    
+    <span class="token comment"># Code to get the measurement information for the rotation matrix</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        
+        setPowerSupplyChCurrent<span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> i<span class="token punctuation">,</span> baseCurrent<span class="token operator">/</span><span class="token number">1000</span><span class="token punctuation">)</span>
+        sleep<span class="token punctuation">(</span><span class="token number">0.1</span><span class="token punctuation">)</span>
+        
+        fData <span class="token operator">=</span> getMeasurement<span class="token punctuation">(</span>serialObj<span class="token punctuation">)</span>
+        
+        setPowerSupplyChCurrent<span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> i<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        sleep<span class="token punctuation">(</span><span class="token number">0.1</span><span class="token punctuation">)</span>    
+        
+        bufferData<span class="token punctuation">[</span>i<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> fData<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-</span> bufferData<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span>
+        bufferData<span class="token punctuation">[</span>i<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> fData<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> bufferData<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span>
+        bufferData<span class="token punctuation">[</span>i<span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> fData<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">-</span> bufferData<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span>
+        
+    <span class="token comment"># Doing a linear relationship between the Current set in the coil and the Field measured with this </span>
+    ch1Field <span class="token operator">=</span> np<span class="token punctuation">.</span>linalg<span class="token punctuation">.</span>norm<span class="token punctuation">(</span>bufferData<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    ch1Current <span class="token operator">=</span> baseCurrent
+    
+    ch2Field <span class="token operator">=</span> np<span class="token punctuation">.</span>linalg<span class="token punctuation">.</span>norm<span class="token punctuation">(</span>bufferData<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    ch2Current <span class="token operator">=</span> baseCurrent
+    
+    ch3Field <span class="token operator">=</span> np<span class="token punctuation">.</span>linalg<span class="token punctuation">.</span>norm<span class="token punctuation">(</span>bufferData<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    ch3Current <span class="token operator">=</span> baseCurrent
+    
+    
+    CurrentToField <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    FieldToCurrent <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    
+    <span class="token comment"># Linear coeficients to converto from uT to mA and vice-versa</span>
+    CurrentToField<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> ch1Field<span class="token operator">/</span>ch1Current
+    FieldToCurrent<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token operator">/</span>CurrentToField<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    
+    CurrentToField<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> ch2Field<span class="token operator">/</span>ch2Current
+    FieldToCurrent<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token operator">/</span>CurrentToField<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+    
+    CurrentToField<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> ch3Field<span class="token operator">/</span>ch3Current
+    FieldToCurrent<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token operator">/</span>CurrentToField<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
+    
+    relationshipError <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    
+    relationshipError<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> np<span class="token punctuation">.</span>linalg<span class="token punctuation">.</span>norm<span class="token punctuation">(</span>CurrentToField<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-</span> teorethicalValue<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">/</span>teorethicalValue<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">*</span><span class="token number">100</span>
+    relationshipError<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> np<span class="token punctuation">.</span>linalg<span class="token punctuation">.</span>norm<span class="token punctuation">(</span>CurrentToField<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> teorethicalValue<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">/</span>teorethicalValue<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">*</span><span class="token number">100</span>
+    relationshipError<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> np<span class="token punctuation">.</span>linalg<span class="token punctuation">.</span>norm<span class="token punctuation">(</span>CurrentToField<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">-</span> teorethicalValue<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">/</span>teorethicalValue<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token operator">*</span><span class="token number">100</span>
+    
+    <span class="token comment">#print(&quot;field/current ration error (%) for each coil&quot;)</span>
+    <span class="token comment">#print(relationshipError)</span>
+    
+    <span class="token comment"># Those are the equations used to find the coeficients for the rotation matrix</span>
+    <span class="token triple-quoted-string string">&apos;&apos;&apos;
+    Ix0 = Cx1*xM0 + Cx2*yM0 + Cx3*zM0
+    Ix1 = Cx1*xM1 + Cx2*yM1 + Cx3*zM1
+    Ix2 = Cx1*xM2 + Cx2*yM2 + Cx3*zM2
+    
+    Iy0 = Cy1*xM0 + Cy2*yM0 + Cy3*zM0
+    Iy1 = Cy1*xM1 + Cy2*yM1 + Cy3*zM1
+    Iy2 = Cy1*xM2 + Cy2*yM2 + Cy3*zM2
+    
+    Iz0 = Cz1*xM0 + Cz2*yM0 + Cz3*zM0
+    Iz1 = Cz1*xM1 + Cz2*yM1 + Cz3*zM1
+    Iz2 = Cz1*xM2 + Cz2*yM2 + Cz3*zM2
+    &apos;&apos;&apos;</span>
+    
+    <span class="token comment"># The code to arrange the equations to get the rotation coeficients</span>
+    I1 <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span>baseCurrent<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    I2 <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span>baseCurrent<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    I3 <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>baseCurrent<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    M <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            M<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> bufferData<span class="token punctuation">[</span>i<span class="token punctuation">,</span>j<span class="token punctuation">]</span>
+    
+    <span class="token comment"># Solving the 3x3 systems</span>
+    C1 <span class="token operator">=</span> np<span class="token punctuation">.</span>linalg<span class="token punctuation">.</span>solve<span class="token punctuation">(</span>M<span class="token punctuation">,</span>I1<span class="token punctuation">)</span><span class="token operator">*</span>ch1Field<span class="token operator">/</span>ch1Current
+    C2 <span class="token operator">=</span> np<span class="token punctuation">.</span>linalg<span class="token punctuation">.</span>solve<span class="token punctuation">(</span>M<span class="token punctuation">,</span>I2<span class="token punctuation">)</span><span class="token operator">*</span>ch2Field<span class="token operator">/</span>ch2Current
+    C3 <span class="token operator">=</span> np<span class="token punctuation">.</span>linalg<span class="token punctuation">.</span>solve<span class="token punctuation">(</span>M<span class="token punctuation">,</span>I3<span class="token punctuation">)</span><span class="token operator">*</span>ch3Field<span class="token operator">/</span>ch3Current
+    
+    <span class="token comment"># The rotation matrix &apos;C&apos; that transform the uT measurement raw to the coils direction measurement in uT too</span>
+    rotationMatrix <span class="token operator">=</span> <span class="token punctuation">[</span>C1<span class="token punctuation">,</span> C2<span class="token punctuation">,</span> C3<span class="token punctuation">]</span>
+    
+    <span class="token comment"># Reseting the Power Supply</span>
+    setPowerSupplyAllChCurrent<span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    setPowerSupplyAllChVoltage<span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+    
+    sleep<span class="token punctuation">(</span><span class="token number">0.1</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">return</span> rotationMatrix<span class="token punctuation">,</span> CurrentToField<span class="token punctuation">,</span> FieldToCurrent<span class="token punctuation">,</span> relationshipError
+
+
+<span class="token keyword">def</span> <span class="token function">COMdetect</span><span class="token punctuation">(</span>COMdescription <span class="token operator">=</span> MCUcomText<span class="token punctuation">,</span> errorMessage <span class="token operator">=</span> <span class="token string">&apos;MCU COM not detected&apos;</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    xablau <span class="token operator">=</span> serial<span class="token punctuation">.</span>tools<span class="token punctuation">.</span>list_ports<span class="token punctuation">.</span>comports<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token builtin">len</span><span class="token punctuation">(</span>xablau<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment">#print(xablau[i],[1])</span>
+        ue <span class="token operator">=</span> xablau<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>find<span class="token punctuation">(</span>COMdescription<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> ue <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
+            COM <span class="token operator">=</span> xablau<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+            <span class="token keyword">break</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            COM <span class="token operator">=</span> errorMessage
+    <span class="token keyword">return</span> COM
+
+<span class="token keyword">def</span> <span class="token function">waitForNewData</span><span class="token punctuation">(</span>serial<span class="token punctuation">,</span> nTries <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span> tryTime <span class="token operator">=</span> <span class="token number">0.001</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    
+    i <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">while</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> serial<span class="token punctuation">.</span>in_waiting <span class="token operator">&gt;</span> <span class="token number">5</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token number">0</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            sleep<span class="token punctuation">(</span>tryTime<span class="token punctuation">)</span>
+            i <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">if</span> i <span class="token operator">&gt;</span> nTries<span class="token punctuation">:</span>
+            <span class="token comment">#print(&apos;dataWaiting tries overflow&apos;)</span>
+            <span class="token keyword">return</span> <span class="token number">1</span>
+
+<span class="token keyword">def</span> <span class="token function">getDataFromSerial</span><span class="token punctuation">(</span>serial<span class="token punctuation">,</span> regexSampleFinder<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    strXYZSamples <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span>regexSampleFinder<span class="token punctuation">,</span> <span class="token builtin">str</span><span class="token punctuation">(</span>serial<span class="token punctuation">.</span>readline<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment">#print(strXYZSamples)</span>
+    serial<span class="token punctuation">.</span>reset_input_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> strXYZSamples
+
+<span class="token keyword">def</span> <span class="token function">createSerialObj</span><span class="token punctuation">(</span>COM<span class="token punctuation">,</span> baudrate <span class="token operator">=</span> <span class="token number">256000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> serial<span class="token punctuation">.</span>Serial<span class="token punctuation">(</span>COM<span class="token punctuation">,</span> timeout<span class="token operator">=</span><span class="token number">0.5</span><span class="token punctuation">,</span> baudrate <span class="token operator">=</span> baudrate<span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">getDataFromSerialToString</span><span class="token punctuation">(</span>serial<span class="token punctuation">,</span> regexSampleFinder<span class="token punctuation">,</span> time_ms<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        waitForNewData<span class="token punctuation">(</span>serial<span class="token punctuation">,</span>tryTime <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span>time_ms<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">1000</span><span class="token punctuation">)</span>
+            
+        <span class="token keyword">return</span> getDataFromSerial<span class="token punctuation">(</span>serial<span class="token punctuation">,</span> regexSampleFinder<span class="token punctuation">)</span>   
+    
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> error<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token number">0</span>
+
+<span class="token keyword">def</span> <span class="token function">strToFloat</span><span class="token punctuation">(</span>strData<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    i <span class="token operator">=</span> <span class="token number">0</span>
+    floatData <span class="token operator">=</span> np<span class="token punctuation">.</span>ones<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>strData<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">float</span><span class="token punctuation">,</span> <span class="token string">&apos;C&apos;</span><span class="token punctuation">)</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>strData<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        floatData<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span>strData<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        i <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token keyword">return</span> floatData
+
+<span class="token keyword">def</span> <span class="token function">WhatTimeIsIt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    justTime <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> justTime<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">22</span><span class="token punctuation">]</span>
+
+<span class="token keyword">def</span> <span class="token function">writeDataOnFile</span><span class="token punctuation">(</span><span class="token builtin">file</span><span class="token punctuation">,</span> data <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        i <span class="token operator">=</span> <span class="token number">0</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token builtin">file</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span>data<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token builtin">file</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">&quot;;&quot;</span><span class="token punctuation">)</span>
+            i<span class="token operator">+=</span><span class="token number">1</span>     
+        <span class="token builtin">file</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span>WhatTimeIsIt<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token builtin">file</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">&quot;\n&quot;</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token number">0</span>
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> error<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span>
+
+<span class="token keyword">def</span> <span class="token function">makeDir</span><span class="token punctuation">(</span>director<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        os<span class="token punctuation">.</span>makedirs<span class="token punctuation">(</span>director<span class="token punctuation">)</span>
+    <span class="token keyword">except</span> FileExistsError<span class="token punctuation">:</span>
+        <span class="token comment"># directory already exists</span>
+        <span class="token keyword">pass</span>
+
+<span class="token keyword">def</span> <span class="token function">createAndOpenFile</span><span class="token punctuation">(</span>folder<span class="token punctuation">,</span> name<span class="token punctuation">,</span> ext<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    
+    filePath <span class="token operator">=</span> folder <span class="token operator">+</span> name <span class="token operator">+</span> ext
+    
+    <span class="token keyword">return</span> <span class="token builtin">open</span><span class="token punctuation">(</span>filePath<span class="token punctuation">,</span><span class="token string">&quot;w+&quot;</span><span class="token punctuation">)</span>
+    
+<span class="token keyword">def</span> <span class="token function">closeSerialObj</span><span class="token punctuation">(</span>serial<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    serial<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+<span class="token keyword">def</span> <span class="token function">closeFile</span><span class="token punctuation">(</span><span class="token builtin">file</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token builtin">file</span><span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+<span class="token keyword">def</span> <span class="token function">sendCommandPS</span><span class="token punctuation">(</span>instrument <span class="token punctuation">,</span> command<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    instrument<span class="token punctuation">.</span>write<span class="token punctuation">(</span>command<span class="token punctuation">)</span>  
+    sleep<span class="token punctuation">(</span><span class="token number">0.01</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">startupCoilsPolarity</span><span class="token punctuation">(</span>serialObj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    serialObj<span class="token punctuation">.</span>reset_input_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    serialObj<span class="token punctuation">.</span>reset_output_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">while</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        serialObj<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">b&apos;S&apos;</span><span class="token punctuation">)</span>
+        <span class="token comment">#print(i)</span>
+        i<span class="token operator">+=</span><span class="token number">1</span>
+        <span class="token keyword">if</span> <span class="token number">0</span> <span class="token operator">==</span> waitForNewData<span class="token punctuation">(</span>serialObj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            check <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>serialObj<span class="token punctuation">.</span>readline<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token comment">#print(check)</span>
+            serialObj<span class="token punctuation">.</span>reset_input_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> check <span class="token operator">==</span> <span class="token string">&quot;b&apos;S Done\\n&apos;&quot;</span><span class="token punctuation">:</span>
+                <span class="token keyword">break</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> i <span class="token operator">&gt;</span> <span class="token number">10</span><span class="token punctuation">:</span>
+                serialObj<span class="token punctuation">.</span>reset_input_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token keyword">break</span>
+
+<span class="token keyword">def</span> <span class="token function">changeCoilPolarity</span><span class="token punctuation">(</span>serialObj<span class="token punctuation">,</span> Coil<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    serialObj<span class="token punctuation">.</span>reset_input_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    serialObj<span class="token punctuation">.</span>reset_output_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">while</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> Coil <span class="token operator">==</span> <span class="token string">&apos;setExternal&apos;</span><span class="token punctuation">:</span>
+            serialObj<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">b&apos;E&apos;</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> Coil <span class="token operator">==</span> <span class="token string">&apos;resetExternal&apos;</span><span class="token punctuation">:</span>
+            serialObj<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">b&apos;e&apos;</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> Coil <span class="token operator">==</span> <span class="token string">&apos;setMiddle&apos;</span><span class="token punctuation">:</span>
+            serialObj<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">b&apos;M&apos;</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> Coil <span class="token operator">==</span> <span class="token string">&apos;resetMiddle&apos;</span><span class="token punctuation">:</span>
+            serialObj<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">b&apos;m&apos;</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> Coil <span class="token operator">==</span> <span class="token string">&apos;setInner&apos;</span><span class="token punctuation">:</span>
+            serialObj<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">b&apos;I&apos;</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> Coil <span class="token operator">==</span> <span class="token string">&apos;resetInner&apos;</span><span class="token punctuation">:</span>
+            serialObj<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">b&apos;i&apos;</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> Exception<span class="token punctuation">(</span><span class="token string">&quot;This Coil reference doesn&apos;t exist&quot;</span><span class="token punctuation">)</span>
+            
+        i<span class="token operator">+=</span><span class="token number">1</span>
+        <span class="token keyword">if</span> <span class="token number">0</span> <span class="token operator">==</span> waitForNewData<span class="token punctuation">(</span>serialObj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            check <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>serialObj<span class="token punctuation">.</span>readline<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token comment">#print(check)</span>
+            serialObj<span class="token punctuation">.</span>reset_input_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> check <span class="token operator">==</span> <span class="token string">&quot;b&apos;E Done\\n&apos;&quot;</span><span class="token punctuation">:</span>
+                <span class="token keyword">break</span>
+            <span class="token keyword">if</span> check <span class="token operator">==</span> <span class="token string">&quot;b&apos;I Done\\n&apos;&quot;</span><span class="token punctuation">:</span>
+                <span class="token keyword">break</span>
+            <span class="token keyword">if</span> check <span class="token operator">==</span> <span class="token string">&quot;b&apos;M Done\\n&apos;&quot;</span><span class="token punctuation">:</span>
+                <span class="token keyword">break</span>
+            <span class="token keyword">if</span> check <span class="token operator">==</span> <span class="token string">&quot;b&apos;e Done\\n&apos;&quot;</span><span class="token punctuation">:</span>
+                <span class="token keyword">break</span>
+            <span class="token keyword">if</span> check <span class="token operator">==</span> <span class="token string">&quot;b&apos;i Done\\n&apos;&quot;</span><span class="token punctuation">:</span>
+                <span class="token keyword">break</span>
+            <span class="token keyword">if</span> check <span class="token operator">==</span> <span class="token string">&quot;b&apos;m Done\\n&apos;&quot;</span><span class="token punctuation">:</span>
+                <span class="token keyword">break</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> i <span class="token operator">&gt;</span> <span class="token number">200</span><span class="token punctuation">:</span>
+                serialObj<span class="token punctuation">.</span>reset_input_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token keyword">break</span>
+            
+<span class="token keyword">def</span> <span class="token function">inChangeCoilPolarity</span><span class="token punctuation">(</span>serialObj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    serialObj<span class="token punctuation">.</span>reset_input_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    serialObj<span class="token punctuation">.</span>reset_output_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">while</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        serialObj<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">b&apos;I&apos;</span><span class="token punctuation">)</span>
+        i<span class="token operator">+=</span><span class="token number">1</span>
+        <span class="token keyword">if</span> <span class="token number">0</span> <span class="token operator">==</span> waitForNewData<span class="token punctuation">(</span>serialObj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            serialObj<span class="token punctuation">.</span>reset_input_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> i <span class="token operator">&gt;</span> <span class="token number">10</span><span class="token punctuation">:</span>
+                serialObj<span class="token punctuation">.</span>reset_input_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token keyword">break</span>
+
+<span class="token keyword">def</span> <span class="token function">midChangeCoilPolarity</span><span class="token punctuation">(</span>serialObj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    serialObj<span class="token punctuation">.</span>reset_input_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    serialObj<span class="token punctuation">.</span>reset_output_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">while</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        serialObj<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">b&apos;M&apos;</span><span class="token punctuation">)</span>
+        i<span class="token operator">+=</span><span class="token number">1</span>
+        <span class="token keyword">if</span> <span class="token number">0</span> <span class="token operator">==</span> waitForNewData<span class="token punctuation">(</span>serialObj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            serialObj<span class="token punctuation">.</span>reset_input_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> i <span class="token operator">&gt;</span> <span class="token number">10</span><span class="token punctuation">:</span>
+                serialObj<span class="token punctuation">.</span>reset_input_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token keyword">break</span>
+    
+<span class="token keyword">def</span> <span class="token function">exChangeCoilPolarity</span><span class="token punctuation">(</span>serialObj<span class="token punctuation">)</span><span class="token punctuation">:</span>   
+    i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    serialObj<span class="token punctuation">.</span>reset_input_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    serialObj<span class="token punctuation">.</span>reset_output_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">while</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        serialObj<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">b&apos;E&apos;</span><span class="token punctuation">)</span>
+        i<span class="token operator">+=</span><span class="token number">1</span>
+        <span class="token keyword">if</span> <span class="token number">0</span> <span class="token operator">==</span> waitForNewData<span class="token punctuation">(</span>serialObj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            serialObj<span class="token punctuation">.</span>reset_input_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> i <span class="token operator">&gt;</span> <span class="token number">10</span><span class="token punctuation">:</span>
+                serialObj<span class="token punctuation">.</span>reset_input_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token keyword">break</span>
+
+<span class="token keyword">def</span> <span class="token function">getMeasurement</span><span class="token punctuation">(</span>serialObj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    serialObj<span class="token punctuation">.</span>reset_input_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">while</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        fData <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span>
+        serialObj<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">b&apos;D&apos;</span><span class="token punctuation">)</span>
+        i<span class="token operator">+=</span><span class="token number">1</span>
+        <span class="token keyword">if</span> <span class="token number">0</span> <span class="token operator">==</span> waitForNewData<span class="token punctuation">(</span>serialObj<span class="token punctuation">)</span><span class="token punctuation">:</span>   
+            strData <span class="token operator">=</span> getDataFromSerial<span class="token punctuation">(</span>serialObj<span class="token punctuation">,</span> regexSampleFinder<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> i <span class="token operator">==</span> <span class="token number">8</span><span class="token punctuation">:</span>
+                <span class="token keyword">return</span> fData
+            <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>strData<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">:</span>
+                fData <span class="token operator">=</span> strToFloat<span class="token punctuation">(</span>strData<span class="token punctuation">)</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>  
+                <span class="token keyword">print</span><span class="token punctuation">(</span>strData<span class="token punctuation">)</span>
+                serialObj<span class="token punctuation">.</span>reset_input_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token keyword">if</span> i <span class="token operator">==</span> <span class="token number">5</span><span class="token punctuation">:</span>
+                    <span class="token keyword">return</span> fData
+                <span class="token keyword">continue</span>
+            serialObj<span class="token punctuation">.</span>reset_input_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> fData
+
+<span class="token keyword">def</span> <span class="token function">startUpPowerSupply</span><span class="token punctuation">(</span>resource_name <span class="token operator">=</span> <span class="token string">&apos;USB0::0x1AB1::0x0E11::DP8A203800261::0::INSTR&apos;</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    
+    rm <span class="token operator">=</span> visa<span class="token punctuation">.</span>ResourceManager<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># To connect the wraper to the USB driver</span>
+    dp800 <span class="token operator">=</span> rm<span class="token punctuation">.</span>open_resource<span class="token punctuation">(</span>resource_name<span class="token punctuation">)</span> <span class="token comment"># Open a resource that can comunicate with RIGOL PS</span>
+    <span class="token comment"># setup to starts the procedure</span>
+    dp800<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">&quot;SOUR1:VOLT 0&quot;</span><span class="token punctuation">)</span>
+    dp800<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">&quot;SOUR1:CURR 0&quot;</span><span class="token punctuation">)</span>  
+    sleep<span class="token punctuation">(</span><span class="token number">0.1</span><span class="token punctuation">)</span>
+    dp800<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">&quot;SOUR2:VOLT 0&quot;</span><span class="token punctuation">)</span>
+    dp800<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">&quot;SOUR2:CURR 0&quot;</span><span class="token punctuation">)</span>
+    sleep<span class="token punctuation">(</span><span class="token number">0.1</span><span class="token punctuation">)</span>
+    dp800<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">&quot;SOUR3:VOLT 0&quot;</span><span class="token punctuation">)</span>
+    dp800<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">&quot;SOUR3:CURR 0&quot;</span><span class="token punctuation">)</span>
+    sleep<span class="token punctuation">(</span><span class="token number">0.1</span><span class="token punctuation">)</span>
+    
+    dp800<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">&apos;OUTP CH1,ON&apos;</span><span class="token punctuation">)</span>  <span class="token comment"># Enabling the Channel 1 output</span>
+    dp800<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">&apos;OUTP CH2,ON&apos;</span><span class="token punctuation">)</span>  <span class="token comment"># Enabling the Channel 1 output</span>
+    dp800<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">&apos;OUTP CH3,ON&apos;</span><span class="token punctuation">)</span>  <span class="token comment"># Enabling the Channel 1 output</span>
+    
+    <span class="token keyword">return</span> rm<span class="token punctuation">,</span> dp800
+    
+<span class="token keyword">def</span> <span class="token function">closingPowerSupplyChannel</span><span class="token punctuation">(</span>dp800<span class="token punctuation">,</span> rm<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    dp800<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    rm<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+<span class="token keyword">def</span> <span class="token function">setupMCU</span><span class="token punctuation">(</span>serialObj<span class="token punctuation">,</span> samplesPerMean<span class="token punctuation">,</span> timeBetweenSamples<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    sleep<span class="token punctuation">(</span><span class="token number">0.1</span><span class="token punctuation">)</span>
+    serialObj<span class="token punctuation">.</span>write<span class="token punctuation">(</span>samplesPerMean<span class="token punctuation">)</span>
+    sleep<span class="token punctuation">(</span><span class="token number">0.1</span><span class="token punctuation">)</span>
+    serialObj<span class="token punctuation">.</span>write<span class="token punctuation">(</span>timeBetweenSamples<span class="token punctuation">)</span>
+    serialObj<span class="token punctuation">.</span>reset_input_buffer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    sleep<span class="token punctuation">(</span><span class="token number">0.1</span><span class="token punctuation">)</span>
+    
+<span class="token keyword">def</span> <span class="token function">setPowerSupplyAllChCurrent</span><span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> Current<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    sendCommandPS<span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> <span class="token string">&apos;SOUR1:CURR &apos;</span><span class="token operator">+</span><span class="token builtin">str</span><span class="token punctuation">(</span>Current<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    sendCommandPS<span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> <span class="token string">&apos;SOUR2:CURR &apos;</span><span class="token operator">+</span><span class="token builtin">str</span><span class="token punctuation">(</span>Current<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    sendCommandPS<span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> <span class="token string">&apos;SOUR3:CURR &apos;</span><span class="token operator">+</span><span class="token builtin">str</span><span class="token punctuation">(</span>Current<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    
+<span class="token keyword">def</span> <span class="token function">setPowerSupplyAllChVoltage</span><span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> Voltage<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    sendCommandPS<span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> <span class="token string">&apos;SOUR1:VOLT &apos;</span><span class="token operator">+</span><span class="token builtin">str</span><span class="token punctuation">(</span>Voltage<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    sendCommandPS<span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> <span class="token string">&apos;SOUR2:VOLT &apos;</span><span class="token operator">+</span><span class="token builtin">str</span><span class="token punctuation">(</span>Voltage<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    sendCommandPS<span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> <span class="token string">&apos;SOUR3:VOLT &apos;</span><span class="token operator">+</span><span class="token builtin">str</span><span class="token punctuation">(</span><span class="token operator">-</span>Voltage<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">setPowerSupplyChVoltage</span><span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> Channel<span class="token punctuation">,</span> Voltage<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    sendCommandPS<span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> <span class="token string">&apos;SOUR&apos;</span><span class="token operator">+</span><span class="token builtin">str</span><span class="token punctuation">(</span>Channel<span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">&apos;:VOLT &apos;</span><span class="token operator">+</span><span class="token builtin">str</span><span class="token punctuation">(</span>Voltage<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    
+<span class="token keyword">def</span> <span class="token function">setPowerSupplyChCurrent</span><span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> Channel<span class="token punctuation">,</span> Current<span class="token punctuation">,</span> security <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> security<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> Current <span class="token operator">&gt;</span> <span class="token number">0.5</span><span class="token punctuation">:</span>
+            Current <span class="token operator">=</span> <span class="token number">0.5</span>
+    sendCommandPS<span class="token punctuation">(</span>visaObj<span class="token punctuation">,</span> <span class="token string">&apos;SOUR&apos;</span><span class="token operator">+</span><span class="token builtin">str</span><span class="token punctuation">(</span>Channel<span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">&apos;:CURR &apos;</span><span class="token operator">+</span><span class="token builtin">str</span><span class="token punctuation">(</span>Current<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    
+<span class="token comment"># -------------------------------------------------------------------------------------------------------------------</span>
+</pre>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
