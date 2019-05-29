@@ -29,7 +29,6 @@ This document explains how the system was made and how it works, with the purpos
     - [External coil](#external-coil)
     - [Data analisys](#data-analisys)
 - [Magnetic sensor](#magnetic-sensor)
-- [need to explain some things here](#need-to-explain-some-things-here)
 - [Controller](#controller)
   - [Power Supply](#power-supply)
   - [H-bridges](#h-bridges)
@@ -90,7 +89,7 @@ The main parts of the system:
 
 ## Simulator
 
-To design the needed helmholtz coils, an open source python library was used, [magpylib], this library is capable to calculate magnetic field of permanent magnets and current lines or circles.
+To design the needed helmholtz coils, an open source python library was used, [magpylib], this library is capable to calculate magnetic field, through analytical solutions, of permanent magnets and current lines or current loops.
 
 In fact the application is static, so the helmholtz can projected as current loops placed in a helmholtz coil shape.
 
@@ -232,12 +231,6 @@ After some tests, the model achieved for the PCB support is shown in the followi
   <img src="https://i.imgur.com/UGoYnNm.png">
 </p>
 
-<details>
-<summary> If you are viewing it in the repository</summary>
-
-All the files for the 3DModelFiles folder in this repository
-
-</details>
 
 This model perfectly fits inside the coils support model, using the internal part to support the sensor of the system and the more external pegs and holes to support the sample. Notice that the external support is designed in such a way that the sample stays in the middle of the coils. If the sample change, the user can design another 3D model for the support to adapt the coil usage to an especific application
 
@@ -427,10 +420,13 @@ In the resistance the error was quite big, but for an estimative could be helpfu
 
 The magnetic sensor is a really important part of the project, because it will provide the measurements to understand if the coils are working properly or not and the closes some loop to adjust the field if necessary. Some research was done and some sensors was tried. The first solution encounted was the [LIS3MDL] sensor, it's for compass application and had a good range of measurement for the application, but with some tests it showed really bad response to offset errors, so another one was tried, an upgraded version of this sensor from the same company ([ST]), [LSM303D], but somehow there was the same problems. Then researched for another companies that would be specialized in magnetic sensors and then found [MEMSIC], and searching for magnetic sensors, found one that fitted in the application, [MMC3416].
 
-# need to explain some things here
+The sensor have I²C interface, also have a really interesting measurement procedure, where the [set/reset] operation can be applied to extract a better measurement, the downside of this procedure is that it takes time. In this project is not a problem because the application is static.
 
-Sensor in I²C
-Evaluation board
+![](https://i.imgur.com/z9eIjbb.png)
+
+A usefull thing to do is buy the evaluation board in this case, that have everything in hardware set up to just use the sensor. To project, order and solder the PCB takes time, so to develop it faster the [MMC3416 evaluation board] was used.
+
+![](https://i.imgur.com/vEXt4Uy.png)
 
 # Controller
 
@@ -512,7 +508,7 @@ After the 2 responses, the system start to operate in the state machine where th
 
 |State symbol| Description of the state|
 |:-:|:-|
-|'D'| Procedure mean size of measurements and return the mean in the USB comunication|
+|'D'| Procedure mean size of measurements and return the mean in the USB comunication getting back to iddle after|
 |'I'| Sets the polarity to 'set' in the H-bridge connected to the channel 2 and sends back "'I' done!"|
 |'i'| Sets the polarity to 'reset' in the H-bridge connected to the channel 2 and sends back "'i' done!"|
 |'M'| Sets the polarity to 'set' in the H-bridge connected to the channel 3 and sends back "'M' done!"|
@@ -541,6 +537,23 @@ With the definition of how the control will be done and with what, The blocks di
 </p>
 
 # Integration
+
+With a research about how to integrate the VISA application and the USB data from microcontroller, the conclusion was to use python libraries to get the information from USB and to control the power supply, using a structered diferent scripts to do some procedure with this.
+
+The main python libraries used for this integration were:
+-   [pyvisa]
+-   [pyserial]
+
+For some data processing and to show graphics:
+-   [numpy]
+-   [matplotlib]
+
+
+
+[matplotlib]:https://matplotlib.org/
+[numpy]:https://www.numpy.org/
+[pyvisa]:https://pyvisa.readthedocs.io/en/latest/
+[pyserial]:https://pyserial.readthedocs.io/en/latest/pyserial.html
 
 ## System validation
 
@@ -633,16 +646,20 @@ n tem interface :'(
 
 
 
+[MMC3416 evaluation board]:ttps://media.digikey.com/pdf/Data%20Sheets/MEMSIC%20PDFs/MMC3416PJ-B_UG.pdf
 
-[main.c]:main.c.md
+[set/reset]:http://www.seraphim.com.tw/upfiles/c_supports01284968029.pdf
 
-[main.h]:main.h.md
 
-[lib_aux.h]:lib_aux.h.md
+[main.c]:Microcontroller/main.c.html
 
-[lib_aux.c]:lib_aux.c.md
+[main.h]:Microcontroller/main.h.html
 
-[MCC3416_def.h]:MCC3416_def.h.md
+[lib_aux.h]:Microcontroller/lib_aux.h.html
+
+[lib_aux.c]:Microcontroller/lib_aux.c.html
+
+[MCC3416_def.h]:Microcontroller/MCC3416_def.h.html
 
 [CPC1002N]:http://www.ixysic.com/home/pdfs.nsf/www/CPC1002N.pdf/$file/CPC1002N.pdf
 
@@ -657,11 +674,11 @@ n tem interface :'(
 
 [Compass zero field procedure]:https://www.youtube.com/watch?v=aR3ZOZWw4vM&t=
 
-[Helmholtz coil calculator]:HelmholtzCoilCalculator.md
+[Helmholtz coil calculator]:helmholtzCoilsSimulations/HelmholtzCoilCalculator.html
 
-[Auxiliar library]:magpylibUtils.md
+[Auxiliar library]:helmholtzCoilsSimulations/magpylibUtils.html
 
-[Coil Features]:CoilFeatures.md
+[Coil Features]:CoilFeatures.html
 
 [magpylib]:https://github.com/magpylib/magpylib
 

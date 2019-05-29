@@ -1,5 +1,5 @@
 
-´´´C
+```C
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __MMC3416_DEF_H
 #define __MMC3416_DEF_H
