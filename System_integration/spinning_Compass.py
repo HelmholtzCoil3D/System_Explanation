@@ -1,5 +1,3 @@
-
-```python
 # -*- coding: utf-8 -*-
 """
 Created on Thu May 16 13:18:26 2019
@@ -90,46 +88,70 @@ try:
     sleep(0.01)
     i = 0
     indexSum = 1
-    xablau = 240
+    xablau = 90
     flag = 1
-    time = 2
+    time = 0.12
     a = 0
     b = 0
+    FieldToCurrent = [0.5, 2.5, 0.5]
+    rotationMatrix, CurrentToField, FieldToCurrent, er = rotationMatrixCalculator(dp800, serialObj, [0.5,2.5,0.5])
+    
+    
     for j in range(0,3):
         updateCoilPolarity(serialObj, currents[j], channel[j])
         dp800.write('SOUR'+str(int(channel[j]))+':CURR '+str(float(currents[j]/1000)))
-    
-    while(1):
+        
+    coilCurrentCalculatorObj = [(CurrentCalculatorObj(i+1, zeroFieldMeasured[i], FieldToCurrent[i], CurrentToField[i])) for i in range(0,3)]
+    time = 0.12
+    i = 0
+    maxTurns = 30000
+    while(i < maxTurns):
         
         xablau2 = xablau + currents[1]
+        updateCoilPolarity(serialObj, xablau2, 2)
         dp800.write('SOUR'+str(int(2))+':CURR '+str(float(xablau2/1000)))
         dp800.write('SOUR'+str(int(3))+':CURR '+str(float(0/1000)))
-        updateCoilPolarity(serialObj, xablau2, 2)
         sleep(time)
         
-        xablau3 = xablau + currents[0]
+        xablau3 = xablau*5 + currents[0]
+        updateCoilPolarity(serialObj, xablau3, 3)
         dp800.write('SOUR'+str(int(3))+':CURR '+str(float(xablau3/1000)))
         dp800.write('SOUR'+str(int(2))+':CURR '+str(float(0/1000)))
-        updateCoilPolarity(serialObj, xablau3, 3)
         sleep(time)
         
         xablau2 = -xablau + currents[1]
+        updateCoilPolarity(serialObj, xablau2, 2)
         dp800.write('SOUR'+str(int(2))+':CURR '+str(float(xablau2/1000)))
         dp800.write('SOUR'+str(int(3))+':CURR '+str(float(0/1000)))
-        updateCoilPolarity(serialObj, xablau2, 2)
         sleep(time)
         
-        xablau3 = -xablau + currents[0]
+        xablau3 = -xablau*5 + currents[0]
+        updateCoilPolarity(serialObj, xablau3, 3)
         dp800.write('SOUR'+str(int(3))+':CURR '+str(float(xablau3/1000)))
         dp800.write('SOUR'+str(int(2))+':CURR '+str(float(0/1000)))
-        updateCoilPolarity(serialObj, xablau3, 3)
         sleep(time)
         
         b = a
         a = WhatTimeIsIt()
         a = float(a[18:23])
-        print(a-b)
+        #print(a-b)
+        i+=1
+    '''    
+    fieldMeasurement, current2, control = setField(dp800, serialObj, coilCurrentCalculatorObj[1], 0.5, float(4), rotationMatrix, breakCondition = 0.5, maxIterations = 40)
+    fieldMeasurement, current3, control = setField(dp800, serialObj, coilCurrentCalculatorObj[2], 0.5, float(3.6), rotationMatrix, breakCondition = 0.5, maxIterations = 40)
+    print(current2)
+    print(current3)
+    print(fieldMeasurement)
+    '''    
+    i2 = coilCurrentCalculatorObj[1].calculateCurrent(4.8)
+    i3 = coilCurrentCalculatorObj[2].calculateCurrent(2)
+    updateCoilPolarity(serialObj, i2, 2)
+    updateCoilPolarity(serialObj, i3, 3)
+    dp800.write('SOUR'+str(int(3))+':CURR '+str(float(i3/1000)))
+    dp800.write('SOUR'+str(int(2))+':CURR '+str(float(i2/1000)))
     
+    print(i2)
+    print(i3)
     closeSerialObj(serialObj)
     closingPowerSupplyChannel(dp800, rm)
     

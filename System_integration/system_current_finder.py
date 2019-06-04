@@ -1,5 +1,4 @@
-
-```python# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 py file that automatic sets the field of the 3DHC
 """
@@ -14,28 +13,30 @@ from auxLib import  rotationMatrixCalculator, storeDataObj, writeDataOnFile, Cur
 np.set_printoptions(suppress=True)
 #%% Channel controller class
 #closeSerialObj(serialObj)
-
 try:
 #if 1:
     #%% User code
     # Setup information to the microcontroller, must be in binary format "b'information'"
-    samplesPerMean = b'2'
-    timeBetweenSamples = b'100'
+    samplesPerMean = b'4'
+    timeBetweenSamples = b'50'
+    
     samplingTime = 0.1
-    gain = 5
+    gain = 4
     
     fileDir = "./csvData/"
-    fileName = 'fieldsNcurrents2'
+    fileName = 'fieldsNcurrents'
     
     # Magnetic field in uT
-    #pattern = 'straight'
-    pattern = 'Circular'
-    lowerFieldLimit = -1000
-    upperFieldLimit = 1000
-    steps = 100
+    pattern = 'straight'
+    #pattern = 'Circular'
+    lowerFieldLimit = -200
+    upperFieldLimit = 200
+    fieldResolution = 10
     
-    #%% Start up code    
+#%% Start up code    
         
+    steps = round((upperFieldLimit - lowerFieldLimit)/fieldResolution) + 1
+    
     # Teorethical values for field/current ration
     xTeo = 0.5
     yTeo = 2.5
@@ -92,7 +93,7 @@ try:
         innerCoilFieldVector = np.linspace(lowerFieldLimit, upperFieldLimit, steps)    
         for j in range(0, len(innerCoilFieldVector)):
             # Send the command to set the current
-            fieldMeasurement, current, control = setField(dp800, serialObj, coilCurrentCalculatorObj[1], samplingTime*gain, float(innerCoilFieldVector[j]), rotationMatrix, breakCondition = 0.5, maxIterations = 40)
+            fieldMeasurement, current, control = setField(dp800, serialObj, coilCurrentCalculatorObj[1], samplingTime*gain, float(innerCoilFieldVector[j]), rotationMatrix, breakCondition = float(innerCoilFieldVector[j]/500), maxIterations = 40)
             dataManager.storeData(fieldMeasurement, current, 2,zeroField[1], control)
             
             print("fieldMeasurement : \n"+str(fieldMeasurement))
@@ -112,8 +113,8 @@ try:
         for j in range(0, len(innerCoilFieldVector)):
             # Send the command to set the current
 
-            fieldMeasurement, current, control = setField(dp800, serialObj, coilCurrentCalculatorObj[1], samplingTime*gain, float(innerCoilFieldVector[j]), rotationMatrix, breakCondition = 0.5, maxIterations = 40)
-            fieldMeasurement2, current2, control2 = setField(dp800, serialObj, coilCurrentCalculatorObj[2], samplingTime*gain, float(midCoilFieldVector[j]), rotationMatrix, breakCondition = 0.5, maxIterations = 40)
+            fieldMeasurement, current, control = setField(dp800, serialObj, coilCurrentCalculatorObj[1], samplingTime*gain, float(innerCoilFieldVector[j]), rotationMatrix, breakCondition = 1, maxIterations = 40)
+            fieldMeasurement2, current2, control2 = setField(dp800, serialObj, coilCurrentCalculatorObj[2], samplingTime*gain, float(midCoilFieldVector[j]), rotationMatrix, breakCondition = 1, maxIterations = 40)
             
             dataManager.storeData(fieldMeasurement, current, 2,zeroField[1], control)
             dataManager.storeData(fieldMeasurement2, current2, 3,zeroField[2], control2)

@@ -1,5 +1,5 @@
 
-```C
+
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __LIB_AUX_H
 #define __LIB_AUX_H

@@ -1,17 +1,17 @@
 # Helmholtz Coil System components
-### April 10, 2019 - *Thursday*
+### June 04, 2019 - *Thursday*
 
 ---
 
 ### To order:
 
--   *PCB's* **[?]**
--   *[BM1422AGMV-ZE2]* - want to give it a try some time
--   *[Relay TX-S]* - maybe (let the option avaliable in the PCB)
 ---
   
+[Eurocircuits Gmbh]:https://www.eurocircuits.com/
 ### Already ordered
 
+-   *PCB's* - [Eurocircuits Gmbh] (191,81 eu)
+  
 ##### Power Supply
 -   *[DP-831A]* **[1]** - Power Supply
     -   *[PowerSupply Datasheet]*

@@ -1,5 +1,4 @@
-```python
- # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 Created on Mon May 13 13:02:43 2019
 
@@ -17,10 +16,10 @@ from auxLib import  updateCoilPolarity, getDataFromReader, rotationMatrixCalcula
 
 samplesPerMean = b'2'
 timeBetweenSamples = b'100'
-measurementPeriod = 0.00
+measurementPeriod = 0.01
 
 csvPath = "./csvData/"
-csvFileName = "fieldsNcurrents2"
+csvFileName = "fieldsNcurrents"
 
 #%%
 
@@ -82,23 +81,12 @@ try:
     sleep(0.01)
     i = 0
     indexSum = 1
-    while(1):
-        #print(currents[i])
-        #print(channel[i])
-        xablau = (currents[i]-currentOffset[channel[i]-1])
-        updateCoilPolarity(serialObj, xablau, channel[i])
-        dp800.write('SOUR'+str(int(channel[i]))+':CURR '+str(float(xablau/1000)))
-        sleep(0.01)
-        i += indexSum
-        if i == 3:
-            indexSum = 1
-        if i == len(currents):
-            i = 3
     
     while(1):
-            
         if str(control[i]) == "['Current']":
             xablau = (currents[i]-currentOffset[channel[i]-1])
+            
+            #print(xablau)
             updateCoilPolarity(serialObj, xablau, channel[i])
             setPowerSupplyChCurrent(dp800, channel[i], float(xablau/1000))
             setPowerSupplyChVoltage(dp800, channel[i], 4)
@@ -108,7 +96,7 @@ try:
             setPowerSupplyChCurrent(dp800, channel[i], 0.5)
             
         sleep(measurementPeriod)
-            
+        input(i)  
         fData = getMeasurement(serialObj)
         fData = np.matmul(rotationMatrix, fData)
         nsei = 3
@@ -116,10 +104,15 @@ try:
             newMeasures[i][j] = fData[j]
             errors[i][j] = newMeasures[i][j] - floatData[j][i]
         i += indexSum
-        if i == 4:
-            indexSum = 1
-        if i == len(currents):
-            i = 4
+        
+        if i > len(currents):
+            break
+        
+        
+        #if i == 4:
+         #   indexSum = 1
+        #if i == len(currents):
+         #   i = 4
     
     print('absolute diference between measured field and expected field:')
     print(errors)

@@ -1,5 +1,3 @@
-
-```python
 # -*- coding: utf-8 -*-
 """
 Auxiliar library for the Serial and User interface for the Helmholtz 3Dcoil project
@@ -216,7 +214,7 @@ def closedLoopAdjust(visaObj, serialObj, channel, samplingTime, desiredField, ro
         iAnt = i
         
         index += 1
-        if (np.linalg.norm(e) < breakCondition):
+        if (np.linalg.norm(e) < np.linalg.norm(breakCondition)):
             break
         if index > maxIterations:
             break    
@@ -477,7 +475,7 @@ def COMdetect(COMdescription = MCUcomText, errorMessage = 'MCU COM not detected'
             COM = errorMessage
     return COM
 
-def waitForNewData(serial, nTries = 10, tryTime = 0.001):
+def waitForNewData(serial, nTries = 1, tryTime = 0.001):
     
     i = 0
     while 1:
@@ -496,15 +494,16 @@ def getDataFromSerial(serial, regexSampleFinder):
     serial.reset_input_buffer()
     return strXYZSamples
 
-def createSerialObj(COM, baudrate = 256000):
-    return serial.Serial(COM, timeout=0.5, baudrate = baudrate)
+def createSerialObj(COM):
+    return serial.Serial(COM, timeout=0.5, baudrate = 256000)
 
 def getDataFromSerialToString(serial, regexSampleFinder, time_ms):
     
     try:
         waitForNewData(serial,tryTime = float(time_ms)/1000)
             
-        return getDataFromSerial(serial, regexSampleFinder)   
+        return getDataFromSerial(serial, regexSampleFinder)      
+        #sleep(float(time_ms)/1000
     
     except Exception as error:
         print(error)
@@ -579,7 +578,85 @@ def startupCoilsPolarity(serialObj):
             if i > 10:
                 serialObj.reset_input_buffer()
                 break
+'''            
+def adjustCurrent(visaObj, serialObj, C, coil, initialCurrent, desiredField, polarity, breakCondition = 0.1, nIteration = 40):
+    
+    # Setting the initial values of B and Ba
+    i = 0   
+    newCurrent = initialCurrent
+    adjustCheck = 1
+    if coil == 'External':
+        index = 0
+    elif coil == 'Inner':
+        index = 1
+        adjustCheck = 3
+    elif coil == 'Middle':
+        index = 2
+    else:
+        raise Exception("There's no coil with this reference")
+        
+    # The iteration loop that will find the correct HelmoltzCoil to get the I desired with B desired together
+    while (1):
+        
+        setPowerSupplyChCurrent(visaObj, index+1, float(newCurrent/1000))
+                    
+        # Code that change the current and get a measurement to get the field
+        fData = getMeasurement(serialObj)
+        field = np.matmul(C, fData)
+        
+        field[index] = float(field[index])
+        
+        print(field)
+        # --------------------------------------------------------------------------------------------
+        # Increment the coilIntDiameter for the next iteration
+        i += 1
+        
+        if (np.linalg.norm(field[index] - desiredField) < breakCondition):
+            break
+        
+        if (i > nIteration):
+            break
+        
+        check = np.linalg.norm(desiredField - field[index])
+        #print(check)
+        if check < 0.5*adjustCheck:
+            if polarity > 0:
+                if (field[index] < desiredField):
+                    newCurrent +=  0.1 #mA
+                elif (field[index] > desiredField):
+                    newCurrent -=  0.1 #mA
+            else:
+                if (field[index] < desiredField):
+                    newCurrent -=  0.1 #mA
+                elif (field[index] > desiredField):
+                    newCurrent +=  0.1 #mA
+        elif check < 3*adjustCheck:
+            if polarity > 0:
+                if (field[index] < desiredField):
+                    newCurrent +=  1 #mA
+                elif (field[index] > desiredField):
+                    newCurrent -=  1 #mA
+            else:
+                if (field[index] < desiredField):
+                    newCurrent -=  1 #mA
+                elif (field[index] > desiredField):
+                    newCurrent +=  1 #mA
+        else:
+            if polarity > 0:
+                if (field[index] < desiredField):
+                    newCurrent +=  10 #mA
+                elif (field[index] > desiredField):
+                    newCurrent -=  10 #mA
+            else:
+                if (field[index] < desiredField):
+                    newCurrent -=  10 #mA
+                elif (field[index] > desiredField):
+                    newCurrent +=  10 #mA
+        
+    # -----------------------------------------------------------------------------------------------------
 
+    return newCurrent
+'''
 def changeCoilPolarity(serialObj, Coil):
     i = 0;
     serialObj.reset_input_buffer()
@@ -671,12 +748,15 @@ def getMeasurement(serialObj):
     i = 0;
     serialObj.reset_input_buffer()
     while 1:
-        fData = [0,0,0]
+        fData = np.zeros((3,1))
         serialObj.write(b'D')
         i+=1
         if 0 == waitForNewData(serialObj):   
             strData = getDataFromSerial(serialObj, regexSampleFinder)
             if i == 8:
+                fData[0] = 0
+                fData[1] = 0
+                fData[2] = 0
                 return fData
             if len(strData) == 3:
                 fData = strToFloat(strData)
@@ -684,6 +764,9 @@ def getMeasurement(serialObj):
                 print(strData)
                 serialObj.reset_input_buffer()
                 if i == 5:
+                    fData[0] = 0
+                    fData[1] = 0
+                    fData[2] = 0
                     return fData
                 continue
             serialObj.reset_input_buffer()
@@ -711,16 +794,19 @@ def startUpPowerSupply(resource_name = 'USB0::0x1AB1::0x0E11::DP8A203800261::0::
     return rm, dp800
     
 def closingPowerSupplyChannel(dp800, rm):
+    #dp800.write('OUTP CH1,OFF')  # Enabling the Channel 1 output
+    #dp800.write('OUTP CH2,OFF')  # Enabling the Channel 1 output
+    #dp800.write('OUTP CH3,OFF')  # Enabling the Channel 1 output
     dp800.close()
     rm.close()
     
 def setupMCU(serialObj, samplesPerMean, timeBetweenSamples):
-    sleep(0.1)
+    sleep(1)
     serialObj.write(samplesPerMean)
-    sleep(0.1)
+    sleep(1)
     serialObj.write(timeBetweenSamples)
     serialObj.reset_input_buffer()
-    sleep(0.1)
+    sleep(1)
     
 def setPowerSupplyAllChCurrent(visaObj, Current):
     sendCommandPS(visaObj, 'SOUR1:CURR '+str(Current))
@@ -741,4 +827,7 @@ def setPowerSupplyChCurrent(visaObj, Channel, Current, security = True):
             Current = 0.5
     sendCommandPS(visaObj, 'SOUR'+str(Channel)+':CURR '+str(Current))
     
+def measurementNtransformation(serialObj, C):
+    Field = getMeasurement(serialObj)
+    return np.matmul(C, Field)
 # -------------------------------------------------------------------------------------------------------------------

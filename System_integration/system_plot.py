@@ -1,4 +1,3 @@
-```python
 # -*- coding: utf-8 -*-
 """
 Created on Wed Apr  3 16:55:50 2019
@@ -11,7 +10,7 @@ from auxLib import getDataFromReader
 #%% User code
 
 csvPath = "./csvData/"
-csvFileName = "fieldsNcurrents2"
+csvFileName = "fieldsNcurrents2 - Kopie"
 
 
 #%%

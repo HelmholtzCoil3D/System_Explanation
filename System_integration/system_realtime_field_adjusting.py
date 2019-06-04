@@ -1,4 +1,3 @@
-```python
 # -*- coding: utf-8 -*-
 """
 py file that automatic sets the field of the 3DHC
@@ -20,11 +19,11 @@ try:
     #%% User code
     # Setup information to the microcontroller, must be in binary format "b'information'"
     samplesPerMean = b'30'
-    timeBetweenSamples = b'1'
+    timeBetweenSamples = b'500'
     gain = 1
     samplingTime = 0.2*gain
     
-    desiredField = [0, 4, 3.6]
+    desiredField = [0, -4, -3]
     
     plotRealTime = 1
     
