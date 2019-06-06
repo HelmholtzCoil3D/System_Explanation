@@ -687,6 +687,14 @@ The final result of the system:
 </p>
 </details>
 
+</details>
+<details>
+<summary> <b>Click here to see the automatic measurements (fluxgate)</b> </summary>
+<p align="center">
+  <img src="https://i.imgur.com/YpFL2j4.gif">
+</p>
+</details>
+
 
 <details>
 <summary> <b>Youtube videos</b> </summary>
@@ -698,9 +706,15 @@ The final result of the system:
 [Compass zero field procedure]
 <iframe width="560" height="315" src="https://www.youtube.com/embed/aR3ZOZWw4vM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+[Automatic measurements]
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5FVGol-J0HI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 </details>
 
 
+
+[Automatic measurements]:https://www.youtube.com/watch?v=5FVGol-J0HI
 
 [order list]:ComponnentsListToOrder.md
 
