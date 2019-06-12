@@ -707,11 +707,10 @@ The final result of the system:
   Data analysis
 
   <img src="https://i.imgur.com/8HJcHRR.png">
+  <img src="https://i.imgur.com/kUJt71W.png">
 
-  <img src="https://i.imgur.com/ClfrhYr.png">
-
-  previous result (neosha work)
-
+  result comparition (neosha work)
+  <img src="https://i.imgur.com/6ziGVu8.png">
   <img src="https://i.imgur.com/6dymBwM.png">
   
   
